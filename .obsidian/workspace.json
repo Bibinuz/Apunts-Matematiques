@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
-                "mode": "source",
+                "file": "README.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03. Successions de Nombres Reals"
+              "title": "README"
             }
           },
           {
@@ -95,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 202.89128875732422
+    "width": 202.89128875732422,
+    "collapsed": true
   },
   "right": {
     "id": "b802eb41e04375c3",
@@ -200,12 +201,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "92d4149d599e2a8e",
+  "active": "b500f56167f8c69f",
   "lastOpenFiles": [
+    "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
     "README.md",
     "Apunts/Índex.md",
     "Apunts/Índex - Funcions 1.md",
-    "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
     "GUIA_APUNTS.md",
     "Apunts Fotos/Funcions1/PXL_20261010_100712039.jpg",
     "GUIA_VAULT.md",

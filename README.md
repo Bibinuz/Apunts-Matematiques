@@ -1,14 +1,14 @@
 # Apunts del Grau de Matemàtiques
 
-Repositori d'apunts teòrics complets, estructurats i amb el màxim rigor formal per a les assignatures del Grau de Matemàtiques. El contingut està redactat íntegrament en català, optimitzat per a la visualització, edició i navegació interconnectada mitjançant **Obsidian** (o qualsevol visor de Markdown amb suport per a $\LaTeX$).
+Aquest repositori conté transcripcions assistides per intel·ligència artificial (IA) d'apunts presos a mà i explicacions a la pissarra durant les classes presencials del Grau de Matemàtiques. El contingut està redactat íntegrament en català amb el màxim rigor formal, estructurat en unitats temàtiques completes i optimitzat per a la visualització, edició i navegació interconnectada mitjançant **Obsidian** (o qualsevol visor de Markdown amb suport per a $\LaTeX$).
 
 ---
 
-## 🚀 Instal·lació
+## Instal·lació
 
 1. **Clonar el repositori:**
    ```bash
-   git clone https://github.com/<usuari>/Matematiques.git
+   git clone https://github.com/Bibinuz/Matematiques.git
    cd Matematiques
    ```
 
@@ -19,7 +19,7 @@ Repositori d'apunts teòrics complets, estructurats i amb el màxim rigor formal
 
 ---
 
-## 📖 Instruccions d'Ús
+## Instruccions d'Ús
 
 - **Punt d'inici:** Comença a [`Apunts/Índex.md`](Apunts/Índex.md) per veure la distribució global de totes les assignatures i els seus respectius índexs temàtics.
 - **Navegació ràpida:** 
@@ -30,7 +30,7 @@ Repositori d'apunts teòrics complets, estructurats i amb el màxim rigor formal
 
 ---
 
-## 🛠️ Ampliació i Contribucions (Forks)
+## Ampliació i Contribucions (Forks)
 
 Si vols fer un **fork** d'aquest repositori per afegir nous apunts, assignatures o exercicis:
 
@@ -47,6 +47,6 @@ Si vols fer un **fork** d'aquest repositori per afegir nous apunts, assignatures
 
 ---
 
-## 📄 Llicència
+## Llicència
 
 Material d'ús lliure i obert per a la comunitat d'estudiants i docents de matemàtiques.
