@@ -8,7 +8,7 @@ Aquest repositori conté transcripcions assistides per intel·ligència artifici
 
 1. **Clonar el repositori:**
    ```bash
-   git clone https://github.com/Bibinuz/Matematiques.git
+   https://github.com/Bibinuz/Apunts-Matematiques.git
    cd Matematiques
    ```
 
