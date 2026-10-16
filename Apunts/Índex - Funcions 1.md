@@ -22,7 +22,7 @@ Benvingut/da al mòdul de **Funcions 1** (Càlcul / Anàlisi Matemàtica 1). Aqu
 - **Equipotència:** Bijeccions entre conjunts.
 - **Conjunts numerables:** Definició formal ($|A| = |\mathbb{N}| = \aleph_0$). Demostració explícita de la numerabilitat de $\mathbb{Z}$ via bijecció intercalada.
 - **Proposicions clau:** Subconjunts infinits de numerables són numerables; equivalència amb l'existència d'injecció cap a $\mathbb{N}$; numerabilitat del producte cartesià $A \times B$ demostrada via factorització en nombres primers ($2^{i(a)} 3^{j(b)}$).
-- **Teorema de la numerabilitat de $\mathbb{Q}$:** Prova per descomposició en primers i via l'ordenació diagonal en ziga-zaga de Cantor per a $\mathbb{Q}^+$.
+- **Teorema de la numerabilitat de $\mathbb{Q}$:** Prova per descomposició en primers i via l'ordenació diagonal en ziga-zaga de Cantor per a $\mathbb{Q}^+`.
 - **Incomptabilitat de $\mathbb{R}$:** Demostració mestra per l'**argument diagonal de Cantor** que $(0, 1)$ no és numerable, concloent que $|\mathbb{R}| = \mathfrak{c} = 2^{\aleph_0} > \aleph_0$.
 
 ### 3. [[03. Successions de Nombres Reals]]
@@ -37,7 +37,11 @@ Benvingut/da al mòdul de **Funcions 1** (Càlcul / Anàlisi Matemàtica 1). Aqu
 - **Proposició Fonamental de Convergència i Acotació:**
   - Tota successió convergent és acotada: Demostració formal amb conjunt finit $M = \{a_1, \dots, a_{n_0}, L - 1/2, L + 1/2\}$ i els seus extrems $\max(M)$ i $\min(M)$.
   - El recíproc és fals: Contraexemple d'$a_n = (-1)^n$ (acotada però no convergent).
+- **Preservació de desigualtats febles pel límit:** Demostració per reducció a l'absurd amb $\varepsilon = \frac{a - K}{2}$. Pas de desigualtats estrictes a febles al límit.
+- **Àlgebra de límits:** Demostracions rigoroses amb $\varepsilon$: suma ($\varepsilon/2$), producte (terme creuat $a_n b$ i fitació de convergents), i invers (lema $|b_n| > |b|/2$).
+- **Teorema de la Convergència Monòtona:** Tota successió creixent i acotada superiorment convergeix a $\alpha = \sup A$ (demostració rigorosa per completesa i caracterització del suprem). Cas decreixent amb $\inf A$.
+- **Càlcul d'indeterminacions:** Resolució de la indeterminació $\infty - \infty$ mitjançant multiplicació i divisió pel conjugat ($\lim (\sqrt{n^2+1}-n) = 0$).
 
 ---
 *Enllaços de navegació:*
-- [[Índex|← Tornar a l'Índex Principal del Vault]]
+- [[Índex|← Tornar a l'Índex Principal]]

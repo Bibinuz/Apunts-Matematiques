@@ -1,6 +1,6 @@
-# Grau de Matemàtiques — Índex General del Vault
+# Grau de Matemàtiques — Índex General
 
-Benvingut/da al **Vault Centralitzat d'Apunts del Grau de Matemàtiques**. Aquest espai conté tots els apunts teòrics, teoremes, lemes, demostracions rigoroses i exemples extrets i transcrits de les classes presencials.
+Benvingut/da al **Repositori Centralitzat d'Apunts del Grau de Matemàtiques**. Aquest espai conté tots els apunts teòrics, teoremes, lemes, demostracions rigoroses i exemples extrets i transcrits de les classes presencials.
 
 ---
 
@@ -12,9 +12,11 @@ Apunts/
 ├── Índex - Àlgebra 1.md
 ├── Índex - Fonaments 1.md
 ├── Índex - Funcions 1.md
+├── Índex - Mecànica Clàssica.md
 ├── Algebra 1/
 ├── Fonaments 1/
-└── Funcions 1/
+├── Funcions 1/
+└── Mecanica Classica/
 ```
 
 ---
@@ -26,7 +28,7 @@ Assignatura centrada en l'estudi de sistemes d'equacions lineals, àlgebra matri
 - **Tema 2:** [[02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius]]
   - *Equivalència de matrius, PAQ-reducció ($PAQ = \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$), rang per files i per columnes, criteris d'invertibilitat, càlcul d'inversa per Gauss-Jordan i Teorema de Rouché-Frobenius (SCD, SCI, SI).*
 - **Tema 3:** [[03. Determinants]]
-  - *Interpretació geomètrica d'àrees i volums orientats, definició axiomàtica multilineal i alternada, propietats algebraiques, triangulació gaussiana, regla de Sarrus i desenvolupament per cofactors de Laplace.*
+  - *Interpretació geomètrica d'àrees i volums orientats, definició axiomàtica multilineal i alternada, deducció formal en $2 \times 2$, determinants d'elementals, Teorema de Binet-Cauchy ($\det(AB)=\det(A)\det(B)$) amb prova en 3 passos, criteri d'invertibilitat, inversa unilateral, teorema de la transposada i desenvolupament de Laplace.*
 
 ---
 
@@ -37,7 +39,7 @@ Assignatura que estableix el llenguatge formal, la lògica, els mètodes de demo
 - **Tema 2:** [[02. Teoria de Conjunts i Construccions Fonamentals]]
   - *Infinit potencial vs en acte, definició de Dedekind de conjunt infinit, prova que $\mathbb{N}$ és infinit, axiomes de Peano, principi d'inducció matemàtica, operacions de conjunts, De Morgan, conjunt de les parts $\mathcal{P}(A)$, producte cartesià i la seva Propietat Universal.*
 - **Tema 3:** [[03. Relacions Binàries, Equivalència i Ordre]]
-  - *Definició formal de relació binària, grafs i representacions matricials, propietats (reflexiva, simètrica, antisimètrica, transitiva), relacions d'equivalència, classes d'equivalència, conjunt quocient, Teorema de la Partició i relacions d'ordre (posets).*
+  - *Definició formal de relació binària, grafs i representacions matricials, propietats (reflexiva, simètrica, antisimètrica, transitiva), relacions d'equivalència, classes d'equivalència, conjunt quocient, Teorema de la Partició, relacions d'ordre (posets), ordre de divisibilitat a $\mathbb{N}^*$, elements minimals/maximals/mínim/màxim, unicitat del mínim i diagrames de Hasse.*
 
 ---
 
@@ -48,7 +50,14 @@ Assignatura dedicada a l'anàlisi matemàtica rigorosa a la recta real $\mathbb{
 - **Tema 2:** [[02. Cardinalitat i Numerabilitat]]
   - *Desenvolupament decimal (periòdic vs no periòdic) i unicitat, aplicacions injectives/bijectives, definició de numerabilitat ($\aleph_0$), bijecció de $\mathbb{Z}$, numerabilitat de subconjunts i productes cartesians, demostracions que $\mathbb{Q}$ és numerable, i l'argument diagonal de Cantor provant que $\mathbb{R}$ no és numerable.*
 - **Tema 3:** [[03. Successions de Nombres Reals]]
-  - *Concepte de successió real, successions acotades i monòtones, definició formal de límit de successió ($\varepsilon$-$n_0$), càlcul explícit de llindars per a $\frac{1}{n} \to 0$ i $\frac{n+3}{n+2} \to 1$, divergència de $(-1)^n$, teorema d'unicitat del límit i teorema de relació entre convergència i acotació.*
+  - *Concepte de successió real, successions acotades i monòtones, definició formal de límit ($\varepsilon$-$n_0$), càlcul explícit de llindars, unicitat del límit, acotació de convergents, preservació de desigualtats febles pel pas al límit, àlgebra de límits amb proves detallades per $\varepsilon$, Teorema de la Convergència Monòtona (suprem/ínfim) i resolució pel conjugat.*
+
+---
+
+### 4. [[Índex - Mecànica Clàssica|Mecànica Clàssica]]
+Assignatura de física matemàtica orientada a l'estudi del moviment de sistemes materials, cinemàtica, dinàmica newtoniana i principis de conservació.
+- **Tema 1:** [[01. Cinemàtica en 2D i 3D]]
+  - *Marc vectorial a l'espai euclidià, vector posició $\vec{r}(t)$, vector desplaçament $\vec{AB}$, àlgebra de vectors, descomposició en base ortonormal $\{\hat{i}, \hat{j}, \hat{k}\}$, vector velocitat instantània $\vec{v} = \frac{d\vec{r}}{dt}$ i tangència, vector acceleració instantània $\vec{a} = \frac{d^2\vec{r}}{dt^2}$, i estudi complet del tir parabòlic (llançament de projectils en 2D sense fricció: equacions horàries, equació de la trajectòria, alçada màxima, temps de vol i abast màxim).*
 
 ---
 
@@ -57,4 +66,4 @@ Assignatura dedicada a l'anàlisi matemàtica rigorosa a la recta real $\mathbb{
 > [!TIP] Navegació a Obsidian
 > - Prem `Ctrl + O` (o `Cmd + O` a macOS) per obrir qualsevol nota directament escrivint el seu títol.
 > - Utilitza la vista de graf (**Graph View**) per veure com interactuen els teoremes i assignatures entre si.
-> - Per afegir nous apunts o continuar ampliant el vault, consulta el document guia situat a l'arrel: `GUIA_VAULT.md`.
+> - Per afegir nous apunts o continuar ampliant el contingut, consulta el document guia situat a l'arrel: `GUIA_APUNTS.md`.

@@ -13,12 +13,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/Índex - Àlgebra 1.md",
+                "file": "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Índex - Àlgebra 1"
+              "title": "03. Successions de Nombres Reals"
+            }
+          },
+          {
+            "id": "a004999228b8b914",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Apunts Fotos/Funcions1/PXL_20261010_100712039.jpg"
+              },
+              "icon": "lucide-image",
+              "title": "PXL_20261010_100712039"
             }
           }
         ]
@@ -188,21 +200,38 @@
       "bases:Create new base": false
     }
   },
-  "active": "b500f56167f8c69f",
+  "active": "92d4149d599e2a8e",
   "lastOpenFiles": [
-    "GUIA_VAULT.md",
-    "Apunts/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
+    "README.md",
     "Apunts/Índex.md",
-    "Apunts/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
-    "Apunts/Fonaments 1/03. Relacions Binàries, Equivalència i Ordre.md",
-    "Apunts/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
-    "Apunts/Índex - Fonaments 1.md",
-    "Apunts/Índex - Àlgebra 1.md",
-    "Apunts/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
     "Apunts/Índex - Funcions 1.md",
     "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
-    "Apunts/Funcions 1/02. Cardinalitat i Numerabilitat.md",
+    "GUIA_APUNTS.md",
+    "Apunts Fotos/Funcions1/PXL_20261010_100712039.jpg",
+    "GUIA_VAULT.md",
+    "Apunts/Fonaments 1/03. Relacions Binàries, Equivalència i Ordre.md",
+    "Apunts Fotos/Fonaments1/PXL_20261006_154938209.jpg",
+    "Apunts Fotos/Fonaments1/PXL_20261010_100639675.jpg",
+    "Apunts/Índex - Fonaments 1.md",
     "Apunts/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
+    "Apunts/Mecanica Classica/01. Cinemàtica en 2D i 3D.md",
+    "Apunts/Índex - Mecànica Clàssica.md",
+    "Apunts/Mecanica Classica",
+    "Apunts Fotos/MecanicaClassica/PXL_20261010_100732423.jpg",
+    "Apunts Fotos/MecanicaClassica/PXL_20261010_100726394.jpg",
+    "Apunts Fotos/MecanicaClassica",
+    "Apunts Fotos/Funcions1/PXL_20261010_100701127.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261010_100656935.jpg",
+    "Apunts Fotos/Fonaments1/PXL_20261010_100633137.jpg",
+    "Apunts Fotos/PXL_20261010_100732423.jpg",
+    "Apunts Fotos/PXL_20261010_100726394.jpg",
+    "Apunts Fotos/registre_fotos.csv",
+    "Apunts/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
+    "Apunts/Índex - Àlgebra 1.md",
+    "Apunts/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
+    "Apunts/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
+    "Apunts/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
+    "Apunts/Funcions 1/02. Cardinalitat i Numerabilitat.md",
     "Apunts/Algebra 1/03. Determinants.md",
     "Apunts/Funcions 1",
     "Apunts/Fonaments 1",

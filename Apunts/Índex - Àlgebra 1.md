@@ -23,10 +23,12 @@ Benvingut/da al mòdul d'**Àlgebra 1**. Aquest bloc cobreix la teoria fonamenta
 
 ### 3. [[03. Determinants]]
 - **Motivació geomètrica:** Àrea orientada d'un paral·lelogram a $\mathbb{R}^2$, volums orientats a $\mathbb{R}^3$ i hipervolums a $\mathbb{R}^n$.
-- **Definició axiomàtica:** L'única funció $\det: \mathcal{M}_n(\mathbb{K}) \to \mathbb{K}$ multilineal, alternada i normalitzada ($\det(I_n) = 1$).
-- **Propietats algebraiques:** Canvis de signe per permutacions, files/columnes dependents, invariància per transveccions, determinant d'escalars $\det(\lambda A) = \lambda^n \det(A)$, matrius triangulars, Teorema de Binet-Cauchy ($\det(AB) = \det(A)\det(B)$), determinant de la transposada $\det(A^t) = \det(A)$ i de la inversa.
+- **Definició axiomàtica:** L'única funció $\det: \mathcal{M}_n(\mathbb{K}) \to \mathbb{K}$ multilineal, alternada i normalitzada ($\det(I_n) = 1$). Deducció formal unívoca de $\det \begin{pmatrix} a & c \\ b & d \end{pmatrix} = ad - bc$.
+- **Determinant de matrius elementals:** Dilatació ($\det(D) = \lambda$), permutació ($\det(P) = -1$) i transvecció ($\det(E) = 1$).
+- **Teorema de Binet-Cauchy ($\det(AB) = \det(A)\det(B)$):** Demostració completa en tres passos (Cas 1 elemental, Cas 2 invertible per inducció, Cas 3 no invertible amb reducció per columnes).
+- **Corol·laris i aplicacions:** Criteri d'invertibilitat $A \in \operatorname{GL}_n(\mathbb{K}) \iff \det(A) \neq 0$, $\det(A^{-1}) = (\det(A))^{-1}$, inversa unilateral ($AB = I_n \implies BA = I_n$) i teorema de la transposada $\det(A^t) = \det(A)$.
 - **Mètodes pràctics de càlcul:** Càlcul per a ordres 2 i 3 (Regla de Sarrus), triangulació per eliminació gaussiana ($O(n^3)$), desenvolupament per adjunts (Fórmula de Laplace), i expressió explícita de $A^{-1}$ mitjançant la matriu de cofactors.
 
 ---
 *Enllaços de navegació:*
-- [[Índex|← Tornar a l'Índex Principal del Vault]]
+- [[Índex|← Tornar a l'Índex Principal]]
