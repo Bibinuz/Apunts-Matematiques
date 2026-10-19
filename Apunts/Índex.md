@@ -28,7 +28,9 @@ Assignatura centrada en l'estudi de sistemes d'equacions lineals, àlgebra matri
 - **Tema 2:** [[02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius]]
   - *Equivalència de matrius, PAQ-reducció ($PAQ = \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$), rang per files i per columnes, criteris d'invertibilitat, càlcul d'inversa per Gauss-Jordan i Teorema de Rouché-Frobenius (SCD, SCI, SI).*
 - **Tema 3:** [[03. Determinants]]
-  - *Interpretació geomètrica d'àrees i volums orientats, definició axiomàtica multilineal i alternada, deducció formal en $2 \times 2$, determinants d'elementals, Teorema de Binet-Cauchy ($\det(AB)=\det(A)\det(B)$) amb prova en 3 passos, criteri d'invertibilitat, inversa unilateral, teorema de la transposada i desenvolupament de Laplace.*
+  - *Interpretació geomètrica d'àrees i volums orientats, definició axiomàtica multilineal i alternada, deducció formal en $2 \times 2$, determinants d'elementals, Teorema de Binet-Cauchy ($\det(AB)=\det(A)\det(B)$) amb prova en 3 passos, criteri d'invertibilitat, inversa unilateral, teorema de la transposada, desenvolupament de Laplace, el grup simètric $S_n$, transposicions i signe, fórmula explícita de Leibniz i demostració completa d'existència i unicitat.*
+- **Tema 4:** [[04. Espais Vectorials]]
+  - *Estructura algebraica de cos $(\mathbb{K}, +, \cdot)$ (axiomes i exemples: $\mathbb{Q}, \mathbb{R}, \mathbb{C}, \mathbb{F}_2 = \mathbb{Z}/2\mathbb{Z}, \mathbb{Q}(\sqrt{2})$), definició axiomàtica d'espai vectorial sobre un cos, 8 axiomes fonamentals, propietats immediates ($0 \cdot v = \vec{0}$, $(-1)v = -v$), i primers exemples canònics ($\mathbb{K}^n, \mathcal{M}_{m \times n}(\mathbb{K}), \mathbb{K}[x]$).*
 
 ---
 
@@ -39,7 +41,7 @@ Assignatura que estableix el llenguatge formal, la lògica, els mètodes de demo
 - **Tema 2:** [[02. Teoria de Conjunts i Construccions Fonamentals]]
   - *Infinit potencial vs en acte, definició de Dedekind de conjunt infinit, prova que $\mathbb{N}$ és infinit, axiomes de Peano, principi d'inducció matemàtica, operacions de conjunts, De Morgan, conjunt de les parts $\mathcal{P}(A)$, producte cartesià i la seva Propietat Universal.*
 - **Tema 3:** [[03. Relacions Binàries, Equivalència i Ordre]]
-  - *Definició formal de relació binària, grafs i representacions matricials, propietats (reflexiva, simètrica, antisimètrica, transitiva), relacions d'equivalència, classes d'equivalència, conjunt quocient, Teorema de la Partició, relacions d'ordre (posets), ordre de divisibilitat a $\mathbb{N}^*$, elements minimals/maximals/mínim/màxim, unicitat del mínim i diagrames de Hasse.*
+  - *Definició formal de relació binària, grafs i matrius booleanes, propietats (reflexiva, simètrica, antisimètrica, transitiva), relacions d'ordre (posets), ordre de divisibilitat a $\mathbb{N}^*$, elements minimals/maximals/mínim/màxim, unicitat d'extrems, existència de minimals/maximals en posets finits, ordres densos i Teorema de Cantor de caracterització de $(\mathbb{Q}, \le)$ mitjançant el mètode Back-and-Forth.*
 
 ---
 
@@ -50,7 +52,7 @@ Assignatura dedicada a l'anàlisi matemàtica rigorosa a la recta real $\mathbb{
 - **Tema 2:** [[02. Cardinalitat i Numerabilitat]]
   - *Desenvolupament decimal (periòdic vs no periòdic) i unicitat, aplicacions injectives/bijectives, definició de numerabilitat ($\aleph_0$), bijecció de $\mathbb{Z}$, numerabilitat de subconjunts i productes cartesians, demostracions que $\mathbb{Q}$ és numerable, i l'argument diagonal de Cantor provant que $\mathbb{R}$ no és numerable.*
 - **Tema 3:** [[03. Successions de Nombres Reals]]
-  - *Concepte de successió real, successions acotades i monòtones, definició formal de límit ($\varepsilon$-$n_0$), càlcul explícit de llindars, unicitat del límit, acotació de convergents, preservació de desigualtats febles pel pas al límit, àlgebra de límits amb proves detallades per $\varepsilon$, Teorema de la Convergència Monòtona (suprem/ínfim) i resolució pel conjugat.*
+  - *Concepte de successió real, successions acotades i monòtones, definició formal de límit ($\varepsilon$-$n_0$), càlcul explícit de llindars, unicitat del límit, acotació de convergents, preservació de desigualtats febles, àlgebra de límits amb proves detallades per $\varepsilon$, Teorema de la Convergència Monòtona, formes indeterminades, Teorema de l'Encaix (Sandvitx), producte d'infinitèsim per acotada, límits infinits i escales fonamentals de creixement mitjançant el Binomi de Newton ($\ln n \ll n^\alpha \ll x^n \ll n! \ll n^n$), i criteris avançats de càlcul: Stolz-Cesàro, arrel de Cauchy, quocient de d'Alembert i criteri quocient-arrel.*
 
 ---
 

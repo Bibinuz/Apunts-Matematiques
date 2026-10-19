@@ -23,10 +23,10 @@ Benvingut/da al mòdul de **Fonaments 1**. Aquest bloc estableix les bases del r
 ### 3. [[03. Relacions Binàries, Equivalència i Ordre]]
 - **Definició de relació binària:** Graf $\Gamma \subseteq A \times B$ i relacions sobre un conjunt $A$. Representacions mitjançant dígrafs, diagrames sagitals i matrius d'adjacència booleanes.
 - **Propietats sobre un conjunt:** Reflexivitat, irreflexivitat, simetria, antisimetria (formulació estàndard i contrarecíproca) i transitivitat.
-- **Relacions d'equivalència:** Condicions ($R, S, T$), definició de classes d'equivalència $[x]$, conjunt quocient $A / R$, i Teorema de la Partició (bijecció canònica entre particions i relacions d'equivalència).
 - **Relacions d'ordre (Posets):** Ordre parcial, ordre total i comparabilitat. Estudi complet de la relació de divisibilitat a $\mathbb{N}^*$ (proves de reflexivitat, antisimetria via $lk = 1$, i transitivitat).
 - **Elements notables:** Definicions formals de minimal, maximal, mínim (primer element) i màxim (últim element). Diferenciació entre mínim i minimal; estudi dels nombres primers a $\mathbb{N} \setminus \{0, 1\}$ (múltiples minimals, sense mínim) vs $\mathbb{N}^*$ (mínim $1$).
-- **Teorema d'unicitat:** Demostració que el mínim i el màxim són únics si existeixen. Diagrames de Hasse.
+- **Teoremes d'existència i unicitat:** Demostració que el mínim i màxim són únics; existència d'almenys un minimal i un maximal en tot poset finit no buit (demostració per cadenes). Diagrames de Hasse.
+- **Teorema de Cantor de caracterització de $(\mathbb{Q}, \le)$:** Definicions d'ordre dens, sense extrems i d'isomorfisme de posets. Demostració completa del teorema d'isomorfisme d'ordres lineals numerables densos sense extrems mitjançant el mètode d'anada i tornada (*Back-and-Forth*).
 
 ---
 *Enllaços de navegació:*
