@@ -11,10 +11,14 @@
             "id": "b500f56167f8c69f",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -42,7 +46,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de fitxers"
             }
           },
           {
@@ -175,17 +179,19 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:Obre el selector ràpid": false,
+      "graph:Obre la vista gràfica": false,
+      "canvas:Crea un llenç nou": false,
+      "daily-notes:Obre la nota d'avui": false,
+      "templates:Inserir plantilla": false,
+      "command-palette:Obre la paleta d'ordres": false,
+      "bases:Crea una base nova": false
     }
   },
-  "active": "92d4149d599e2a8e",
+  "active": "b500f56167f8c69f",
   "lastOpenFiles": [
+    "GUIA_APUNTS.md",
+    "README.md",
     "Untitled.base",
     "Apunts/Algebra 1/04. Espais Vectorials.md",
     "Apunts/Índex - Àlgebra 1.md",
@@ -203,8 +209,6 @@
     "Apunts/Índex - Fonaments 1.md",
     "Apunts/Índex - Funcions 1.md",
     "Apunts/Índex - Mecànica Clàssica.md",
-    "GUIA_APUNTS.md",
-    "README.md",
     "Apunts Fotos/Funcions1/PXL_20261010_100712039.jpg",
     "Apunts Fotos/Algebra1/PXL_20261010_100255035.jpg",
     "Apunts Fotos/Algebra1/PXL_20261019_132040209.jpg",

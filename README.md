@@ -1,21 +1,50 @@
-# Apunts del Grau de Matemàtiques
+# Apunts del Grau de Matemàtiques — UAB
 
-Aquest repositori conté transcripcions assistides per intel·ligència artificial (IA) d'apunts presos a mà i explicacions a la pissarra durant les classes presencials del Grau de Matemàtiques. El contingut està redactat íntegrament en català amb el màxim rigor formal, estructurat en unitats temàtiques completes i optimitzat per a la visualització, edició i navegació interconnectada mitjançant **Obsidian** (o qualsevol visor de Markdown amb suport per a $\LaTeX$).
+Aquest repositori recull els apunts i materials d'estudi per al **Grau en Matemàtiques a la Universitat Autònoma de Barcelona (UAB)**. 
+
+El contingut prové d'apunts presos a classe, passats a net (de forma manual o amb l'assistència d'IA) i redactats íntegrament en català amb el màxim rigor formal. Està estructurat en unitats temàtiques completes seguint el pla docent de la facultat, i optimitzat com a **arca d'Obsidian** (o qualsevol editor de Markdown amb suport per a $\LaTeX$) per a una navegació interconnectada i fluïda.
 
 ---
 
-## Instal·lació
+## Instal·lació i Sincronització
+
+Pots descarregar i sincronitzar els apunts fàcilment, tant si estàs acostumat/da a la terminal com si prefereixes una interfície gràfica visual:
+
+### Opció A: Windows (Mètode visual amb GitHub Desktop — Recomanat si no uses terminal)
+
+No cal saber fer servir la terminal ni comandes complexes de Git:
+
+1. **Instal·la GitHub Desktop:** Descarrega'l gratuïtament des de [desktop.github.com](https://desktop.github.com/).
+2. **Clona el projecte:**
+   - Obre GitHub Desktop i ves al menú superior: `File` > `Clone repository...`.
+   - Selecciona la pestanya **URL** i enganxa l'enllaç del repositori:
+     ```text
+     https://github.com/Bibinuz/Apunts-Matematiques.git
+     ```
+   - Tria la carpeta del teu ordinador on vols desar els apunts i fes clic a **Clone**.
+3. **Com rebre les actualitzacions:** Cada vegada que algú afegeixi temes nous, només has d'obrir GitHub Desktop i fer clic al botó superior **Fetch origin** (o **Pull origin**) per descarregar les novetats amb un sol clic.
+
+---
+
+### Opció B: Linux / macOS (o via Terminal)
 
 1. **Clonar el repositori:**
    ```bash
-   https://github.com/Bibinuz/Apunts-Matematiques.git
+   git clone https://github.com/Bibinuz/Apunts-Matematiques.git
    cd Matematiques
    ```
+2. **Actualitzar apunts:**
+   ```bash
+   git pull
+   ```
 
-2. **Obrir a Obsidian:**
-   - Descarrega i instal·la [Obsidian](https://obsidian.md/) si encara no el tens.
-   - A la pantalla d'inici, selecciona l'opció per obrir una carpeta existent de l'equip (*Open folder*).
-   - Tria la carpeta arrel d'aquest repositori (`Matematiques`).
+---
+
+### Pas Final: Obrir els apunts a Obsidian (per a tots els sistemes)
+
+1. Descarrega i instal·la [Obsidian](https://obsidian.md/) (disponible per a Windows, Linux i macOS).
+2. Obre Obsidian i a la pantalla inicial tria l'opció **"Obre la carpeta com a arca"** (*Open folder as vault* si tens l'aplicació en anglès).
+3. Selecciona la carpeta `Matematiques` que s'ha clonat al pas anterior. L'arca d'apunts ja està a punt per llegir i navegar!
 
 ---
 
