@@ -1,0 +1,23 @@
+# Imatges i fitxers binaris pesats (manté el repositori lleuger per a col·laboració)
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.bmp
+*.tiff
+*.heic
+*.pdf
+
+# Carpeta de fotos local (es manté local a cada màquina)
+Apunts Fotos/**/*.jpg
+Apunts Fotos/**/*.jpeg
+Apunts Fotos/**/*.png
+Apunts Fotos/**/*.webp
+
+# Obsidian: estat local de la sessió de l'usuari
+.obsidian/workspace.json
+
+# Fitxers de sistema operatiu
+.DS_Store
+Thumbs.db
