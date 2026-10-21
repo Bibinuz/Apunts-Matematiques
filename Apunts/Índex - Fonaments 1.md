@@ -26,7 +26,8 @@ Benvingut/da al mòdul de **Fonaments 1**. Aquest bloc estableix les bases del r
 - **Relacions d'ordre (Posets):** Ordre parcial, ordre total i comparabilitat. Estudi complet de la relació de divisibilitat a $\mathbb{N}^*$ (proves de reflexivitat, antisimetria via $lk = 1$, i transitivitat).
 - **Elements notables:** Definicions formals de minimal, maximal, mínim (primer element) i màxim (últim element). Diferenciació entre mínim i minimal; estudi dels nombres primers a $\mathbb{N} \setminus \{0, 1\}$ (múltiples minimals, sense mínim) vs $\mathbb{N}^*$ (mínim $1$).
 - **Teoremes d'existència i unicitat:** Demostració que el mínim i màxim són únics; existència d'almenys un minimal i un maximal en tot poset finit no buit (demostració per cadenes). Diagrames de Hasse.
-- **Teorema de Cantor de caracterització de $(\mathbb{Q}, \le)$:** Definicions d'ordre dens, sense extrems i d'isomorfisme de posets. Demostració completa del teorema d'isomorfisme d'ordres lineals numerables densos sense extrems mitjançant el mètode d'anada i tornada (*Back-and-Forth*).
+- **Teorema de Cantor de caracterització de $(\mathbb{Q}, \le)$:** Definicions d'ordre dens, sense extrems i d'isomorfisme de posets. Demostració completa del teorema d'isomorfisme d'ordres lineals numerables densos sense extrems mitjançant el mètode d'anada i tornada (*Back-and-Forth*). Corol·lari de classificació exhaustiva dels ordres lineals densos numerables en 4 tipus segons els extrems: $\mathbb{Q}$, $\mathbb{Q} \cap [0, 1[$, $\mathbb{Q} \cap ]0, 1]$ i $\mathbb{Q} \cap [0, 1]$.
+- **Relacions d'equivalència:** Definició axiomàtica ($R, S, T$). Classes d'equivalència $\bar{a}$, no dependència d'elements preferits i representants. Conjunt quocient $E/R$, projecció canònica $\pi: E \to E/R$, i Teorema de la Partició (no buides, disjuntes dos a dos, recobriment total).
 
 ---
 *Enllaços de navegació:*

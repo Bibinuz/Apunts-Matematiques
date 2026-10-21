@@ -30,7 +30,7 @@ Assignatura centrada en l'estudi de sistemes d'equacions lineals, àlgebra matri
 - **Tema 3:** [[03. Determinants]]
   - *Interpretació geomètrica d'àrees i volums orientats, definició axiomàtica multilineal i alternada, deducció formal en $2 \times 2$, determinants d'elementals, Teorema de Binet-Cauchy ($\det(AB)=\det(A)\det(B)$) amb prova en 3 passos, criteri d'invertibilitat, inversa unilateral, teorema de la transposada, desenvolupament de Laplace, el grup simètric $S_n$, transposicions i signe, fórmula explícita de Leibniz i demostració completa d'existència i unicitat.*
 - **Tema 4:** [[04. Espais Vectorials]]
-  - *Estructura algebraica de cos $(\mathbb{K}, +, \cdot)$ (axiomes i exemples: $\mathbb{Q}, \mathbb{R}, \mathbb{C}, \mathbb{F}_2 = \mathbb{Z}/2\mathbb{Z}, \mathbb{Q}(\sqrt{2})$), definició axiomàtica d'espai vectorial sobre un cos, 8 axiomes fonamentals, propietats immediates ($0 \cdot v = \vec{0}$, $(-1)v = -v$), i primers exemples canònics ($\mathbb{K}^n, \mathcal{M}_{m \times n}(\mathbb{K}), \mathbb{K}[x]$).*
+  - *Estructura algebraica de cos $(\mathbb{K}, +, \cdot)$ (axiomes i exemples: $\mathbb{Q}, \mathbb{R}, \mathbb{C}, \mathbb{F}_2 = \mathbb{Z}/2\mathbb{Z}, \mathbb{Q}(\sqrt{2})$), motivació geomètrica de $\mathbb{R}^n$, validesa de la teoria matricial sobre cossos arbitraris $\mathbb{K}$, definició formal d'espai vectorial (8 axiomes: grup abelià per a $(E, +)$ i compatibilitat d'escalars), i exemples canònics: l'espai nul $\{\vec{0}\}$, $\mathbb{K}^n$, matrius $\mathcal{M}_{m \times n}(\mathbb{K})$, polinomis $\mathbb{K}[x]$ i polinomis de grau fitat $\mathbb{K}_n[x]$.*
 
 ---
 
@@ -41,7 +41,7 @@ Assignatura que estableix el llenguatge formal, la lògica, els mètodes de demo
 - **Tema 2:** [[02. Teoria de Conjunts i Construccions Fonamentals]]
   - *Infinit potencial vs en acte, definició de Dedekind de conjunt infinit, prova que $\mathbb{N}$ és infinit, axiomes de Peano, principi d'inducció matemàtica, operacions de conjunts, De Morgan, conjunt de les parts $\mathcal{P}(A)$, producte cartesià i la seva Propietat Universal.*
 - **Tema 3:** [[03. Relacions Binàries, Equivalència i Ordre]]
-  - *Definició formal de relació binària, grafs i matrius booleanes, propietats (reflexiva, simètrica, antisimètrica, transitiva), relacions d'ordre (posets), ordre de divisibilitat a $\mathbb{N}^*$, elements minimals/maximals/mínim/màxim, unicitat d'extrems, existència de minimals/maximals en posets finits, ordres densos i Teorema de Cantor de caracterització de $(\mathbb{Q}, \le)$ mitjançant el mètode Back-and-Forth.*
+  - *Definició formal de relació binària, grafs i matrius booleanes, propietats (reflexiva, simètrica, antisimètrica, transitiva), relacions d'ordre (posets), divisibilitat a $\mathbb{N}^*$, elements notables (minimal, maximal, mínim, màxim), ordres finits i diagrames de Hasse, ordres densos i Teorema de Cantor de $(\mathbb{Q}, \le)$, Corol·lari de classificació en 4 ordres lineals densos segons extrems, relacions d'equivalència (R, S, T), classes d'equivalència $\bar{a}$, representants, conjunt quocient $E/R$, projecció canònica $\pi$ i Teorema de la Partició.*
 
 ---
 

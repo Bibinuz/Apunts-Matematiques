@@ -32,8 +32,9 @@ Benvingut/da al mòdul d'**Àlgebra 1**. Aquest bloc cobreix la teoria fonamenta
 
 ### 4. [[04. Espais Vectorials]]
 - **Estructura algebraica de cos:** Definició axiomàtica d'un cos $(\mathbb{K}, +, \cdot)$ (grup abelià per la suma, grup abelià per als elements no nuls pel producte, distributivitat i $0 \neq 1$).
-- **Exemples de cossos:** Cossos infinits estàndard ($\mathbb{Q}, \mathbb{R}, \mathbb{C}$), el cos finit de dos elements $\mathbb{Z}/2\mathbb{Z} = \mathbb{F}_2$ (amb taules de Cayley i característica 2: $1 + 1 = 0$), i l'extensió quadràtica $\mathbb{Q}(\sqrt{2}) = \{a + b\sqrt{2} \mid a, b \in \mathbb{Q}\}$ amb demostració de la invertibilitat per racionalització.
-- **Definició axiomàtica d'espai vectorial:** Conjunt de vectors $V$ amb suma interna $(V, +)$ (grup abelià) i acció externa d'escalars $\cdot: \mathbb{K} \times V \to V$ que satisfà els 4 axiomes de compatibilitat lineal.
+- **Exemples de cossos:** Cossos infinits estàndard ($\mathbb{Q}, \mathbb{R}, \mathbb{C}$ amb definició explícita d'operacions i unitats), el cos finit de dos elements $\mathbb{Z}/2\mathbb{Z} = \mathbb{F}_2$ (amb taules de Cayley i característica 2: $1 + 1 = 0$), i l'extensió quadràtica $\mathbb{Q}(\sqrt{2}) = \{a + b\sqrt{2} \mid a, b \in \mathbb{Q}\}$ amb demostració de la invertibilitat per racionalització.
+- **Definició axiomàtica d'espai vectorial:** Motivació geomètrica de $\mathbb{R}^n$ (regla del paral·lelogram i escalat de vectors). Observació de la validesa de tota la teoria matricial i de determinants sobre cossos arbitraris $\mathbb{K}$. Definició formal d'un $\mathbb{K}$-espai vectorial $(E, +, \cdot)$ mitjançant els 8 axiomes (grup abelià per a $(E, +)$ i 4 propietats de compatibilitat per al producte per escalars de $\mathbb{K}$).
+- **Exemples canònics:** L'espai vectorial nul $E = \{\vec{0}\}$, l'espai numèric $\mathbb{K}^n$, l'espai matricial $\mathcal{M}_{m \times n}(\mathbb{K})$, l'espai de polinomis $\mathbb{K}[x]$ i els espais de polinomis de grau fitat $\mathbb{K}_n[x]$ amb la seva cadena d'inclusions.
 
 ---
 *Enllaços de navegació:*
