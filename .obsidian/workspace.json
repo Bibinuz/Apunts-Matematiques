@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Apunts/Índex.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Índex"
             }
           }
         ]
@@ -76,7 +76,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-bookmark",
-              "title": "Bookmarks"
+              "title": "Marcadors"
             }
           }
         ]
@@ -190,13 +190,22 @@
   },
   "active": "b500f56167f8c69f",
   "lastOpenFiles": [
-    "GUIA_APUNTS.md",
-    "README.md",
-    "Untitled.base",
-    "Apunts/Algebra 1/04. Espais Vectorials.md",
+    "Apunts/Índex - Funcions 1.md",
     "Apunts/Índex - Àlgebra 1.md",
-    "Apunts/Algebra 1/03. Determinants.md",
+    "Apunts/Índex - Fonaments 1.md",
+    "Apunts/Fonaments 1/03. Relacions Binàries i Ordre.md",
+    "Apunts/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
+    "Apunts/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
+    "Apunts/Fonaments 1/04. Relacions d'Equivalència.md",
+    "Apunts/Índex.md",
+    "03. Relacions Binàries, Equivalència i Ordre.md",
+    "Apunts/Algebra 1/04. Espais Vectorials.md",
     "Apunts/Fonaments 1/03. Relacions Binàries, Equivalència i Ordre.md",
+    "Apunts/Algebra 1/03. Determinants.md",
+    "Apunts/Funcions 1/02. Cardinalitat i Numerabilitat.md",
+    "README.md",
+    "GUIA_APUNTS.md",
+    "Untitled.base",
     "Apunts Fotos/Algebra1/PXL_20261021_172332264.jpg",
     "Apunts Fotos/Algebra1/PXL_20261021_172326490.jpg",
     "Apunts Fotos/Algebra1/PXL_20261021_172321622.jpg",
@@ -204,10 +213,7 @@
     "Apunts Fotos/Fonaments1/PXL_20261021_164211780.jpg",
     "Apunts Fotos/Fonaments1/PXL_20261021_164203161.jpg",
     "Apunts Fotos/Fonaments1/PXL_20261021_164158074.jpg",
-    "Apunts/Índex.md",
     "Apunts/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
-    "Apunts/Índex - Fonaments 1.md",
-    "Apunts/Índex - Funcions 1.md",
     "Apunts/Índex - Mecànica Clàssica.md",
     "Apunts Fotos/Funcions1/PXL_20261010_100712039.jpg",
     "Apunts Fotos/Algebra1/PXL_20261010_100255035.jpg",
@@ -219,10 +225,7 @@
     "Apunts/Mecanica Classica",
     "Apunts Fotos/MecanicaClassica",
     "Apunts Fotos/registre_fotos.csv",
-    "Apunts/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
-    "Apunts/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
     "Apunts/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
-    "Apunts/Funcions 1/02. Cardinalitat i Numerabilitat.md",
     "Apunts/Funcions 1",
     "Apunts/Fonaments 1",
     "Apunts/Algebra 1"

@@ -62,5 +62,5 @@ Aquest protocol el pot seguir qualsevol persona manualment o bé demanar-lo a un
      *Exemple de prompt:*
      > *"He afegit noves fotos a `Apunts Fotos/Algebra1/`. Són la continuació del tema `04. Espais Vectorials.md`. Passa-les a net seguint la GUIA_APUNTS.md i actualitza els índexs."*
 4. **Actualitzar els índexs:**
-   * Afegeix un breu resum dels nous conceptes a `Índex - <Assignatura>.md` i a `Índex.md`.
+   * Afegeix el llistat dels títols dels apartats (en negreta, sense informació extra) a l'índex de l'assignatura (`Índex - <Assignatura>.md`) i enllaça el tema a `Índex.md`.
    * *(Opcional en local)* Si portes el control amb `registre_fotos.csv`, marca les fotos com a processades.
