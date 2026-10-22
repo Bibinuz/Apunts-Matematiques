@@ -7,6 +7,8 @@
 *.bmp
 *.tiff
 *.heic
+# Fitxers de sortida generats (llibres)
+Llibre_*.html
 *.pdf
 
 # Carpeta de fotos local (es manté local a cada màquina)

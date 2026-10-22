@@ -39,7 +39,7 @@ Assignatura que estableix el llenguatge formal, la lògica, els mètodes de demo
 
 ---
 
-### 3. [[Índex - Funcions 1|Funcions d'una Variable 1 (Càlcul / Anàlisi 1)]]
+### 3. [[Índex - Funcions 1|Funcions de Variable Real 1]]
 Assignatura dedicada a l'anàlisi matemàtica rigorosa a la recta real $\mathbb{R}$.
 - **Tema 1:** [[01. Els Nombres Reals i Propietats Fonamentals]]
 - **Tema 2:** [[02. Cardinalitat i Numerabilitat]]

@@ -1,6 +1,6 @@
-# Índex — Funcions d'una Variable 1
+# Índex — Funcions de Variable Real 1
 
-Benvingut/da al mòdul de **Funcions 1** (Càlcul / Anàlisi Matemàtica 1). Aquest bloc estableix els fonaments de l'anàlisi real: la construcció i propietats dels nombres reals, cardinalitat i teoria de la numerabilitat de Cantor, i la teoria de successions i convergència.
+Benvingut/da al mòdul de **Funcions de Variable Real 1**. Aquest bloc estableix els fonaments de l'anàlisi real: la construcció i propietats dels nombres reals, cardinalitat i teoria de la numerabilitat de Cantor, i la teoria de successions i convergència.
 
 ---
 

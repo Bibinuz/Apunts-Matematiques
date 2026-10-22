@@ -190,6 +190,11 @@
   },
   "active": "b500f56167f8c69f",
   "lastOpenFiles": [
+    "Llibre_Fonaments_Parcial1.html",
+    "Llibre_Fonaments_1.html",
+    "Llibre_Matematiques.html",
+    "scripts/generar_llibre.py",
+    "scripts",
     "Apunts/Índex - Funcions 1.md",
     "Apunts/Índex - Àlgebra 1.md",
     "Apunts/Índex - Fonaments 1.md",
@@ -227,7 +232,6 @@
     "Apunts Fotos/registre_fotos.csv",
     "Apunts/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
     "Apunts/Funcions 1",
-    "Apunts/Fonaments 1",
-    "Apunts/Algebra 1"
+    "Apunts/Fonaments 1"
   ]
 }

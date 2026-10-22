@@ -24,6 +24,8 @@ Bones pràctiques, convencions d'estil i protocol per redactar i actualitzar els
 Matematiques/
 ├── .gitignore                      # Ignora fotos i binaris pesats
 ├── GUIA_APUNTS.md                  # Aquesta guia
+├── scripts/                        # Utilitats i scripts d'automatització
+│   └── generar_llibre.py           # Generador del llibre/compendi complet (HTML/PDF)
 ├── Apunts Fotos/                   # Carpeta local (no es puja a GitHub)
 │   ├── registre_fotos.csv          # Seguiment personal de fotos processades
 │   └── <NomAssignatura>/           # Fotos locals d'apunts en brut
