@@ -2,9 +2,19 @@
 """
 generar_llibre.py — Compila tots els apunts en un únic llibre complet (HTML / PDF).
 Ús: python3 scripts/generar_llibre.py
+
+Característiques clau:
+- Descoberta 100% dinàmica d'assignatures i capítols (sense diccionaris rígidament 'hardcoded').
+- Suport per a qualsevol quantitat d'assignatures amb numeració romana algorítmica.
+- Resolució de Wikilinks d'Obsidian a ancoratges interns clicables (<a href="#cap-...">).
+- Filtratge automàtic de notes d'esmena i diagrames Mermaid (treball en brut d'Obsidian).
+- Protecció avançada de LaTeX ($ i $$) i normalització de llistes en blocs de teories/callouts.
+- Estilisme pur natiu (CSS autònom sense dependències de JS invasiu com Paged.js).
+- Regles de print CSS (@media print) per a impressió neta en PDF (salts de pàgina, protecció de fórmules).
 """
 
 import re
+import unicodedata
 from pathlib import Path
 from datetime import datetime
 import markdown
@@ -13,75 +23,178 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 APUNTS_DIR = BASE_DIR / "Apunts"
 OUTPUT_FILE = BASE_DIR / "Llibre_Matematiques.html"
 
-NOM_ASSIGNATURES = {
-    "Algebra 1": "Àlgebra Lineal 1",
-    "Fonaments 1": "Fonaments de les Matemàtiques 1",
-    "Funcions 1": "Funcions de Variable Real 1",
-    "Mecanica Classica": "Mecànica Clàssica"
-}
+MESOS = [
+    "Gener", "Febrer", "Març", "Abril", "Maig", "Juny",
+    "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"
+]
 
-INDEX_PER_ASSIGNATURA = {
-    "Algebra 1": "Índex - Àlgebra 1.md",
-    "Fonaments 1": "Índex - Fonaments 1.md",
-    "Funcions 1": "Índex - Funcions 1.md",
-    "Mecanica Classica": "Índex - Mecànica Clàssica.md"
-}
-
-NUMS_ROMANS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
-
-CALLOUT_CONFIG = {
+CALLOUT_DEFAULTS = {
     "IMPORTANT": ("callout-important", "TEOREMA / DEFINICIÓ"),
-    "NOTE": ("callout-note", "PROPOSICIÓ / LEMA / OBSERVACIÓ"),
+    "NOTE": ("callout-note", "PROPOSICIÓ / LEMA"),
     "WARNING": ("callout-warning", "ATENCIÓ"),
     "TIP": ("callout-tip", "INTUÏCIÓ"),
-    "CAUTION": ("callout-warning", "ALERTA")
+    "CAUTION": ("callout-warning", "ALERTA"),
+    "EXAMPLE": ("callout-tip", "EXEMPLE")
 }
 
-MESOS = ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"]
+
+def normalitzar_text(s: str) -> str:
+    """Elimina accents, espais i caràcters especials per a comparacions robustes."""
+    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode('ascii')
+    return re.sub(r'[^a-zA-Z0-9]', '', s.lower())
+
+
+def slugify(text: str) -> str:
+    """Genera un slug URL/HTML net i segur a partir d'un text."""
+    s = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('ascii')
+    s = re.sub(r'[^\w\s-]', '', s.lower()).strip()
+    return re.sub(r'[-\s]+', '-', s)
+
+
+def to_roman(n: int) -> str:
+    """Converteix qualsevol enter positiu a xifres romanes."""
+    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    syb = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    res = []
+    for v, s in zip(val, syb):
+        while n >= v:
+            res.append(s)
+            n -= v
+    return "".join(res) if res else "I"
+
+
+def natural_sort_key(path: Path):
+    """Clau d'ordenació numèrica natural per a fitxers tipus '01. Nom', '02. Nom'."""
+    m = re.match(r"^(\d+)", path.stem)
+    if m:
+        return (int(m.group(1)), path.stem)
+    return (999, path.stem)
 
 
 def netejar_contingut(text: str) -> str:
-    """Elimina diagrames Mermaid, navegació de peu i neteja els wikilinks."""
-    # 1. Elimina blocs Mermaid i apartats d'esquema que només contenien el diagrama
+    """
+    Elimina diagrames Mermaid, apartats d'esquema resum i enllaços de navegació de final de nota.
+    Els wikilinks es preserven perquè seran resolts a ancoratges interns.
+    """
+    # 1. Elimina blocs Mermaid
     text = re.sub(r"```mermaid[\s\S]*?```", "", text)
+
+    # 2. Elimina apartats d'esquema/resum que només servien per al diagrama
     text = re.sub(r"(?m)^##\s*\d*\.?\s*Esquema\s+(Resum|Global).*$", "", text)
 
-    # 2. Elimina enllaços de navegació de final de nota
-    text = re.sub(r"(?s)(---\s*)?\*(Enllaços de navegació|Enllaços relacionats):\*.*$", "", text).strip()
-
-    # 3. Converteix wikilinks: [[Nota|Text]] -> Text i [[Nota]] -> Nota
-    text = re.sub(r"\[\[([^\|\]]+)\|([^\]]+)\]\]", r"\2", text)
-    text = re.sub(r"\[\[([^\]]+)\]\]", r"\1", text)
+    # 3. Elimina enllaços de navegació de final de nota
+    text = re.sub(r"(?s)(---\s*)?\*+(Enllaços de navegació|Enllaços relacionats)\*+:?.*$", "", text).strip()
 
     return text
 
 
-def protegir_i_convertir_markdown(text: str) -> str:
-    """Preserva el codi LaTeX ($ i $$) intacte abans de passar-lo pel motor Markdown."""
+def protegir_i_convertir_markdown(text: str, wikilink_registry: dict = None) -> str:
+    """
+    Processa el Markdown protegint fórmules LaTeX ($ i $$) i blocs de codi.
+    Resol els wikilinks d'Obsidian a enllaços interns HTML i normalitza les llistes.
+    """
+    if wikilink_registry is None:
+        wikilink_registry = {}
+
+    # 1. Protegir els signes de dòlar ($) que es trobin dins de blocs de codi
+    def protect_code(m):
+        return m.group(0).replace("$", "\uF000")
+
+    def restore_code(m):
+        return m.group(0).replace("\uF000", "$")
+
+    text = re.sub(r"```[\s\S]*?```", protect_code, text)
+    text = re.sub(r"`[^`\n]+?`", protect_code, text)
+
+    # 2. Extreure i protegir fórmules LaTeX
     math_tokens = []
 
-    def save_disp(m):
+    def save_math(m):
         math_tokens.append(m.group(0))
-        return f"%%M_DISP_{len(math_tokens)-1}%%"
+        return f"@@M_TOKEN_{len(math_tokens)-1}@@"
 
-    def save_inl(m):
-        math_tokens.append(m.group(0))
-        return f"%%M_INL_{len(math_tokens)-1}%%"
+    # Display math ($$...$$)
+    text = re.sub(r"\$\$[\s\S]*?\$\$", save_math, text)
+    # Inline math ($...$) amb suport per a caràcters escapats i salts de línia
+    text = re.sub(r"(?<!\$)\$(?!\$)(?:\\.|[^\$\\])+?\$", save_math, text)
 
-    text = re.sub(r"\$\$[\s\S]*?\$\$", save_disp, text)
-    text = re.sub(r"(?<!\$)\$[^\$\n]+?\$(?!\$)", save_inl, text)
+    # Restaurar codi abans de passar pel motor Markdown
+    text = re.sub(r"```[\s\S]*?```", restore_code, text)
+    text = re.sub(r"`[^`\n]+?`", restore_code, text)
 
-    html = markdown.markdown(text, extensions=["fenced_code", "tables"])
+    # 3. Resolució de Wikilinks d'Obsidian
+    def repl_wikilink(m):
+        raw_target = m.group(1).strip()
+        label = m.group(2).strip() if m.group(2) else raw_target
 
+        base_target = raw_target.split("#")[0].strip()
+        target_id = wikilink_registry.get(base_target)
+        if not target_id:
+            target_norm = normalitzar_text(base_target)
+            for reg_name, reg_id in wikilink_registry.items():
+                if normalitzar_text(reg_name) == target_norm:
+                    target_id = reg_id
+                    break
+
+        if target_id:
+            return f'<a href="#{target_id}" class="internal-link">{label}</a>'
+        return label
+
+    text = re.sub(r"\[\[([^\|\]]+)(?:\|([^\]]+))?\]\]", repl_wikilink, text)
+
+    # 4. Normalització de llistes (assegurar salt de línia previ per a Python-Markdown)
+    lines = text.split("\n")
+    norm_lines = []
+    for idx, line in enumerate(lines):
+        if idx > 0 and re.match(r"^\s*(?:[-*+]|\d+\.)\s+", line):
+            prev = lines[idx - 1]
+            if prev.strip() and not re.match(r"^\s*(?:[-*+]|\d+\.)\s+", prev):
+                norm_lines.append("")
+        norm_lines.append(line)
+    text = "\n".join(norm_lines)
+
+    # 5. Conversió de Markdown a HTML
+    html = markdown.markdown(text, extensions=["fenced_code", "tables", "def_list", "attr_list"])
+
+    # 6. Reintegrar les fórmules LaTeX escapant < i > perquè KaTeX les rebi com a TextNodes purs
     for idx, token in enumerate(math_tokens):
-        html = html.replace(f"%%M_DISP_{idx}%%", token)
-        html = html.replace(f"%%M_INL_{idx}%%", token)
+        escaped_math = token.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        html = html.replace(f"@@M_TOKEN_{idx}@@", escaped_math)
 
     return html
 
 
-def processar_callouts(text: str):
-    """Extreu els callouts, converteix el seu contingut interior a Markdown real i deixa marcadors."""
+def get_callout_badge_and_class(ctype: str, ctitle: str):
+    """Determina la insígnia semàntica i la classe d'estil exacta per a un callout."""
+    lower_t = ctitle.lower()
+
+    if lower_t.startswith("teorema"):
+        return "callout-important", "TEOREMA"
+    if lower_t.startswith("definició") or lower_t.startswith("definicio"):
+        return "callout-important", "DEFINICIÓ"
+    if lower_t.startswith("proposició") or lower_t.startswith("proposicio"):
+        return "callout-note", "PROPOSICIÓ"
+    if lower_t.startswith("lema"):
+        return "callout-note", "LEMA"
+    if lower_t.startswith("corol·lari") or lower_t.startswith("corollari"):
+        return "callout-note", "COROL·LARI"
+    if lower_t.startswith("observació") or lower_t.startswith("observacio"):
+        return "callout-note", "OBSERVACIÓ"
+    if lower_t.startswith("exemple"):
+        return "callout-tip", "EXEMPLE"
+    if lower_t.startswith("atenció") or lower_t.startswith("atencio"):
+        return "callout-warning", "ATENCIÓ"
+    if lower_t.startswith("intuïció") or lower_t.startswith("intuicio"):
+        return "callout-tip", "INTUÏCIÓ"
+
+    return CALLOUT_DEFAULTS.get(ctype, ("callout-note", ctype))
+
+
+def processar_callouts(text: str, wikilink_registry: dict):
+    """
+    Extreu els callouts d'Obsidian, filtra notes d'esmena i converteix el cos interior a HTML.
+    Tolerant a múltiples línies en blanc consecutives dins del callout.
+    """
     lines = text.split("\n")
     out = []
     callouts_html = []
@@ -89,28 +202,44 @@ def processar_callouts(text: str):
 
     while i < len(lines):
         line = lines[i]
-        m = re.match(r"^>\s*\[!([A-Z]+)\]\s*(.*)$", line)
+        m = re.match(r"^>\s*\[!([a-zA-Z_-]+)\]\s*(.*)$", line)
         if m:
             ctype = m.group(1).upper()
             ctitle = m.group(2).strip()
-            cls_name, badge = CALLOUT_CONFIG.get(ctype, ("callout-note", ctype))
+
+            # Filtrar notes d'esmena segons indicació
+            is_esmena = "esmena" in ctitle.lower() or "esmena" in ctype.lower()
 
             body = []
             i += 1
             while i < len(lines):
                 cur = lines[i]
+                # Si comença un nou callout, finalitzar l'actual
+                if re.match(r"^>\s*\[!([a-zA-Z_-]+)\]", cur):
+                    break
+
                 if cur.startswith(">"):
                     body.append(re.sub(r"^>\s?", "", cur))
                     i += 1
-                elif cur.strip() == "" and i + 1 < len(lines) and lines[i + 1].startswith(">"):
-                    body.append("")
-                    i += 1
+                elif cur.strip() == "":
+                    j = i + 1
+                    while j < len(lines) and lines[j].strip() == "":
+                        j += 1
+                    if j < len(lines) and lines[j].startswith(">") and not re.match(r"^>\s*\[!([a-zA-Z_-]+)\]", lines[j]):
+                        while i < j:
+                            body.append("")
+                            i += 1
+                    else:
+                        break
                 else:
                     break
 
+            if is_esmena:
+                continue
+
+            cls_name, badge = get_callout_badge_and_class(ctype, ctitle)
             inner_md = "\n".join(body).strip()
-            # Convertim el cos interior del callout de Markdown a HTML per processar negretes, llistes, etc.
-            inner_html = protegir_i_convertir_markdown(inner_md)
+            inner_html = protegir_i_convertir_markdown(inner_md, wikilink_registry)
 
             t_html = f"<span class='callout-title'>{ctitle}</span>" if ctitle else ""
             cid = len(callouts_html)
@@ -129,26 +258,26 @@ def processar_callouts(text: str):
     return "\n".join(out), callouts_html
 
 
-def processar_tema(filepath: Path, ch_id: str):
+def processar_tema(filepath: Path, ch_id: str, wikilink_registry: dict):
     """Llegeix i processa un fitxer de tema individual."""
     with open(filepath, "r", encoding="utf-8") as f:
         text = f.read()
 
     text = netejar_contingut(text)
 
-    # Títol del capítol
+    # 1. Títol del capítol (# ...)
     title_m = re.search(r"^#\s+(.+)$", text, flags=re.MULTILINE)
     chapter_title = title_m.group(1).strip() if title_m else filepath.stem
     text = re.sub(r"^#\s+.+$", "", text, count=1, flags=re.MULTILINE).strip()
 
-    # Seccions (##) per a la Taula de Continguts
+    # 2. Seccions (## ...) per a la Taula de Continguts
     sections = []
     sec_count = [0]
 
     def repl_sec(m):
         sec_count[0] += 1
         stitle = m.group(1).strip()
-        sid = f"{ch_id}-{sec_count[0]}"
+        sid = f"{ch_id}-sec-{sec_count[0]}"
         sections.append({"id": sid, "title": stitle})
         return f'<h3 id="{sid}" class="section-title">{stitle}</h3>'
 
@@ -156,11 +285,13 @@ def processar_tema(filepath: Path, ch_id: str):
     text = re.sub(r"^###\s+(.+)$", r'<h4 class="subsection-title">\1</h4>', text, flags=re.MULTILINE)
     text = re.sub(r"^####\s+(.+)$", r'<h5 class="subsubsection-title">\1</h5>', text, flags=re.MULTILINE)
 
-    # Processar callouts de manera que el seu interior es converteixi a HTML correctament
-    text, callouts_html = processar_callouts(text)
-    html = protegir_i_convertir_markdown(text)
+    # 3. Processar callouts
+    text, callouts_html = processar_callouts(text, wikilink_registry)
 
-    # Reintegrar les caixes de callouts
+    # 4. Convertir el markdown general
+    html = protegir_i_convertir_markdown(text, wikilink_registry)
+
+    # 5. Reintegrar les caixes de callouts
     for cid, c_box in enumerate(callouts_html):
         html = html.replace(f"<p>%%CALLOUT_BLOCK_{cid}%%</p>", c_box)
         html = html.replace(f"%%CALLOUT_BLOCK_{cid}%%", c_box)
@@ -173,35 +304,95 @@ def processar_tema(filepath: Path, ch_id: str):
     }
 
 
-def generar_html(parts: list) -> str:
-    """Genera el document HTML complet amb portada, índex i estils de llibre."""
-    now = datetime.now()
-    data_str = f"{MESOS[now.month - 1]} de {now.year}"
-
-    def obtenir_descripcio_assignatura(dir_name: str) -> str:
-        fname = INDEX_PER_ASSIGNATURA.get(dir_name)
-        if not fname:
-            return ""
-        fpath = APUNTS_DIR / fname
-        if not fpath.exists():
-            return ""
+def descobrir_estructura_apunts():
+    """
+    Descobreix automàticament totes les assignatures i notes d'Apunts/ sense llistes hardcoded.
+    Preserva l'ordre establert a Índex.md si està present, i extreu metadades d'Índex - <Assignatura>.md.
+    """
+    index_master = APUNTS_DIR / "Índex.md"
+    master_order = []
+    if index_master.exists():
         try:
-            content = fpath.read_text(encoding="utf-8")
-            m = re.search(r"^#\s+[^\n]+\n\n(.*?)(?=\n\n---)", content, re.DOTALL)
-            if m:
-                desc = m.group(1).strip()
-                desc = re.sub(r"\[\[([^\|\]]+)\|([^\]]+)\]\]", r"\2", desc)
-                desc = re.sub(r"\[\[([^\]]+)\]\]", r"\1", desc)
-                return protegir_i_convertir_markdown(desc)
+            content = index_master.read_text(encoding="utf-8")
+            matches = re.findall(r"###\s*\d+\.\s*\[\[([^\|\]]+)(?:\|([^\]]+))?\]\]", content)
+            for target, _ in matches:
+                clean_target = re.sub(r"^Índex\s*-\s*", "", target)
+                master_order.append(normalitzar_text(clean_target))
         except Exception:
             pass
-        return ""
+
+    index_files = list(APUNTS_DIR.glob("Índex - *.md"))
+    subdirs = [d for d in APUNTS_DIR.iterdir() if d.is_dir() and not d.name.startswith(".")]
+
+    def get_order_key(d: Path):
+        d_norm = normalitzar_text(d.name)
+        if d_norm in master_order:
+            return (0, master_order.index(d_norm))
+        return (1, d.name)
+
+    subdirs.sort(key=get_order_key)
+
+    subjects_data = []
+
+    for d in subdirs:
+        d_norm = normalitzar_text(d.name)
+        matched_idx = None
+        for idx_file in index_files:
+            m = re.match(r"Índex\s*-\s*(.+)\.md", idx_file.name)
+            if m and normalitzar_text(m.group(1)) == d_norm:
+                matched_idx = idx_file
+                break
+
+        subject_title = d.name
+        subject_desc = ""
+
+        if matched_idx and matched_idx.exists():
+            try:
+                idx_content = matched_idx.read_text(encoding="utf-8")
+                m_title = re.search(r"^#\s+(?:Índex\s*[—–-]\s*)?(.+)$", idx_content, re.MULTILINE)
+                if m_title:
+                    subject_title = m_title.group(1).strip()
+
+                lines = idx_content.strip().splitlines()
+                desc_lines = []
+                in_desc = False
+                for l in lines:
+                    sl = l.strip()
+                    if sl.startswith("# ") and not in_desc:
+                        in_desc = True
+                        continue
+                    if in_desc:
+                        if re.match(r"^(?:---|___|\*\*\*|##)", sl):
+                            break
+                        desc_lines.append(l)
+                subject_desc = "\n".join(desc_lines).strip()
+            except Exception:
+                pass
+
+        notes = [f for f in d.glob("*.md") if not f.name.startswith(".")]
+        notes.sort(key=natural_sort_key)
+
+        if notes:
+            subjects_data.append({
+                "dir_name": d.name,
+                "title": subject_title,
+                "desc": subject_desc,
+                "notes": notes
+            })
+
+    return subjects_data
+
+
+def generar_html(parts: list) -> str:
+    """Genera el document HTML complet amb portada, índex estilitzat i estil de llibre impecable."""
+    now = datetime.now()
+    data_str = f"{MESOS[now.month - 1]} de {now.year}"
 
     # 1. Taula de continguts global (TOC)
     toc = ['<div class="toc-container" id="taula-de-continguts">']
     toc.append('  <div class="toc-title">Taula de Continguts</div>')
     for idx, part in enumerate(parts):
-        roman = NUMS_ROMANS[idx] if idx < len(NUMS_ROMANS) else str(idx + 1)
+        roman = to_roman(idx + 1)
         part_id = f"part-{idx + 1}"
         toc.append(f'  <div class="toc-part"><a href="#{part_id}">Part {roman} — {part["title"]}</a></div>')
         for ch in part["chapters"]:
@@ -214,11 +405,10 @@ def generar_html(parts: list) -> str:
     # 2. Contingut de les parts i capítols
     body = []
     for idx, part in enumerate(parts):
-        roman = NUMS_ROMANS[idx] if idx < len(NUMS_ROMANS) else str(idx + 1)
+        roman = to_roman(idx + 1)
         part_id = f"part-{idx + 1}"
-        desc_html = obtenir_descripcio_assignatura(part.get("dir_name", ""))
 
-        # Generar mini-TOC per a la pàgina de la matèria (estil Obsidian)
+        # Mini-índex de l'assignatura
         part_toc_cards = []
         for ch in part["chapters"]:
             sec_items = []
@@ -231,6 +421,8 @@ def generar_html(parts: list) -> str:
               {sec_html}
             </div>
             ''')
+
+        desc_html = protegir_i_convertir_markdown(part["desc"]) if part["desc"] else ""
 
         body.append(f'''
         <div class="part-page" id="{part_id}">
@@ -273,7 +465,7 @@ def generar_html(parts: list) -> str:
 
     :root {{
       --font-body: 'Crimson Pro', Georgia, serif;
-      --font-heading: 'Inter', system-ui, sans-serif;
+      --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
       --color-text: #1e293b;
       --color-primary: #0f172a;
       --color-border: #e2e8f0;
@@ -312,7 +504,7 @@ def generar_html(parts: list) -> str:
 
     h2.chapter-title {{
       font-size: 20pt;
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1.5px solid var(--color-border);
       padding-bottom: 10px;
       margin-top: 40px;
     }}
@@ -321,6 +513,15 @@ def generar_html(parts: list) -> str:
     h4.subsection-title {{ font-size: 12pt; color: #334155; margin-top: 20px; }}
 
     p {{ margin: 0 0 1em 0; text-align: justify; hyphens: auto; }}
+
+    /* Enllaços interns */
+    a.internal-link {{
+      color: #2563eb;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }}
+    a.internal-link:hover {{ color: #1d4ed8; text-decoration-thickness: 2px; }}
 
     /* Portada */
     .cover {{
@@ -430,6 +631,7 @@ def generar_html(parts: list) -> str:
     .toc-chapter a:hover {{ text-decoration: underline; }}
     .toc-sections {{ margin-left: 35px; font-size: 9.5pt; color: #64748b; line-height: 1.5; }}
     .toc-sections a {{ color: #475569; text-decoration: none; }}
+    .toc-sections a:hover {{ color: #2563eb; text-decoration: underline; }}
 
     /* Pàgina de Matèria (Part) */
     .part-page {{
@@ -675,9 +877,13 @@ def generar_html(parts: list) -> str:
         border: 1px solid #cbd5e1;
       }}
       .chapter {{ page-break-before: always; break-before: page; }}
+      .katex-display {{
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }}
       .callout {{
-        page-break-inside: auto !important;
-        break-inside: auto !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }}
       .callout-header {{
         page-break-after: avoid !important;
@@ -750,32 +956,58 @@ def main():
 
     print("Compilant tots els apunts en un únic llibre...")
 
-    ordre = list(NOM_ASSIGNATURES.keys())
-    subject_dirs = [d for d in APUNTS_DIR.iterdir() if d.is_dir()]
-    subject_dirs.sort(key=lambda d: ordre.index(d.name) if d.name in ordre else 99)
+    # 1. Descoberta dinàmica d'assignatures i temes
+    subjects_data = descobrir_estructura_apunts()
+    if not subjects_data:
+        print("Error: No s'han trobat assignatures amb fitxers .md a Apunts/")
+        return
 
+    # 2. Construcció del registre global de wikilinks (Stem -> cap_id)
+    wikilink_registry = {}
+    total_notes_plan = 0
+
+    for s_idx, s in enumerate(subjects_data):
+        subj_slug = slugify(s["dir_name"])
+        for n in s["notes"]:
+            total_notes_plan += 1
+            m_num = re.match(r"^(\d+)", n.stem)
+            num_str = f"{int(m_num.group(1)):02d}" if m_num else f"{total_notes_plan:02d}"
+            cid = f"cap-{subj_slug}-{num_str}"
+
+            # Registre pel nom complet del fitxer sense extensió
+            wikilink_registry[n.stem] = cid
+            # Registre net sense el prefix numèric ("01. Sistemes Lineals..." -> "Sistemes Lineals...")
+            clean_stem = re.sub(r"^\d+\.\s*", "", n.stem)
+            if clean_stem != n.stem:
+                wikilink_registry[clean_stem] = cid
+
+    # 3. Processament de totes les parts i temes
     parts = []
     total_temes = 0
 
-    for sdir in subject_dirs:
-        sname = NOM_ASSIGNATURES.get(sdir.name, sdir.name)
-        notes = sorted(sdir.glob("*.md"))
+    for s in subjects_data:
+        subj_slug = slugify(s["dir_name"])
         chapters = []
 
-        for n in notes:
-            cid = f"cap-{sdir.name.lower().replace(' ', '-')}-{n.stem[:2]}"
-            chapters.append(processar_tema(n, cid))
+        for n in s["notes"]:
+            cid = wikilink_registry[n.stem]
+            chapters.append(processar_tema(n, cid, wikilink_registry))
             total_temes += 1
 
-        if chapters:
-            parts.append({"title": sname, "dir_name": sdir.name, "chapters": chapters})
+        parts.append({
+            "title": s["title"],
+            "dir_name": s["dir_name"],
+            "desc": s["desc"],
+            "chapters": chapters
+        })
 
+    # 4. Generació de l'HTML complet
     html = generar_html(parts)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"Llibre generat correctament ({total_temes} temes inclosos) a:")
+    print(f"Llibre generat correctament ({total_temes} temes de {len(parts)} assignatures inclosos) a:")
     print(f"   {OUTPUT_FILE.resolve()}")
     print("\nPer obtenir el PDF:")
     print("   Obre el fitxer al navegador i prem el botó 'Desar en PDF' (o Ctrl + P).")
