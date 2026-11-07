@@ -13,7 +13,7 @@ Benvingut/da al mòdul d'**Anàlisis Matemàtica**. Aquest bloc cobreix la teori
 - **Convergència absoluta de sèries. Criteris de Dirichlet i Abel**
 - **Reordenació de sèries**
 
-### 2. [[02. Successions i Sèries de Funcions]]
+### 2. [[02. Successions i sèries de funcions]]
 - **Successions de funcions. Convergència puntual i uniforme**
 - **Sèries de funcions**
 - **Sèries de potències**
