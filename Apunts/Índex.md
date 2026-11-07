@@ -52,6 +52,12 @@ Assignatura de física matemàtica orientada a l'estudi del moviment de sistemes
 - **Tema 1:** [[01. Cinemàtica en 2D i 3D]]
 
 ---
+### 10. [[Índex - Anàlisis Matemàtica| Anàlisis Matemàtica]]
+Assignatura dedicada a l'estudi rigorós de la convergència de sèries, successions de funcions, sèries de potències i Fourier.
+- **Tema 1:** [[01. Sèries numèriques]]
+- **Tema 2:** [[02. Successions i sèries de funcions]]
+
+
 
 ## Pautes de Consulta Ràpida
 
