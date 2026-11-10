@@ -22,18 +22,25 @@ Bones pràctiques, convencions d'estil i protocol per redactar i actualitzar els
 
 ```text
 Matematiques/
-├── .gitignore                      # Ignora fotos i binaris pesats
+├── Índex.md                        # Índex principal del grau (a l'arrel de l'arca)
+├── README.md                       # Documentació i instruccions de clonació
 ├── GUIA_APUNTS.md                  # Aquesta guia
 ├── scripts/                        # Utilitats i scripts d'automatització
-│   └── generar_llibre.py           # Generador del llibre/compendi complet (HTML/PDF)
+│   └── generar_llibre.py           # Compilador HTML/PDF (opcions per curs/assignatura)
 ├── Apunts Fotos/                   # Carpeta local (no es puja a GitHub)
 │   ├── registre_fotos.csv          # Seguiment personal de fotos processades
 │   └── <NomAssignatura>/           # Fotos locals d'apunts en brut
-└── Apunts/                         # Notes compartides al repositori
-    ├── Índex.md                    # Índex principal del grau
-    ├── Índex - <Assignatura>.md    # Índex específic de cada matèria
-    └── <NomAssignatura>/           # Temes en Markdown
-        └── <NN>. <Títol del Tema>.md
+└── Apunts/                         # Notes organitzades per curs acadèmic
+    ├── 1r Curs/
+    │   ├── Índex - 1r Curs.md      # MOC del primer curs
+    │   └── <Assignatura>/          # ex: Algebra 1, Fonaments 1, etc.
+    │       ├── Índex - <Nom>.md    # Índex específic de la matèria
+    │       └── <NN>. <Tema>.md     # Temes en Markdown
+    └── 2n Curs/
+        ├── Índex - 2n Curs.md      # MOC del segon curs
+        └── <Assignatura>/          # ex: Analisi Matematica
+            ├── Índex - <Nom>.md
+            └── <NN>. <Tema>.md
 ```
 
 ---
@@ -46,7 +53,7 @@ Matematiques/
   * `> [!NOTE] Proposició / Lema / Nota d'esmena`: Resultats derivats i correcció d'errades.
   * `> [!WARNING] Atenció`: Trampes típiques o casos especials.
   * `> [!TIP] Intuïció`: Interpretacions geomètriques o consells pràctics.
-* **Navegació:** Al final de cada nota s'inclouen enllaços a l'`[[Índex]]`, al tema anterior i al tema següent.
+* **Navegació:** Al final de cada nota s'inclouen enllaços a l'`[[Índex]]`, a l'índex del curs (`[[Índex - 1r Curs]]`), a l'índex de l'assignatura, i al tema anterior/següent.
 
 ---
 
@@ -56,13 +63,14 @@ Aquest protocol el pot seguir qualsevol persona manualment o bé demanar-lo a un
 
 1. **Preparar el material en brut (en local):** Guarda les fotos o notes originals a la carpeta local corresponent (ex: `Apunts Fotos/<NomAssignatura>/`).
 2. **Decidir la destinació:**
-   * *Si és continuació d'un tema:* S'amplia la nota existent (`Apunts/<NomAssignatura>/<Tema Actual>.md`).
-   * *Si comença un tema nou:* Es crea la següent nota (`<NN+1>. <Nom del Nou Tema>.md`).
+   * *Si és continuació d'un tema:* S'amplia la nota existent (`Apunts/<Curs>/<Assignatura>/<Tema Actual>.md`).
+   * *Si comença un tema nou:* Es crea la següent nota (`<NN+1>. <Nom del Nou Tema>.md`) dins de `Apunts/<Curs>/<Assignatura>/`.
 3. **Redactar i passar a net:**
    * **Si ho fas manualment:** Escriu el contingut a Obsidian amb el màxim rigor pas a pas, emprant $\LaTeX$ i destacant els teoremes amb callouts. Si veus una errada als apunts originals, corregeix-la i afegeix la *Nota d'esmena*.
    * **Si fas servir una IA:** Dóna-li les fotos i indica-li exactament on van.
      *Exemple de prompt:*
-     > *"He afegit noves fotos a `Apunts Fotos/Algebra1/`. Són la continuació del tema `04. Espais Vectorials.md`. Passa-les a net seguint la GUIA_APUNTS.md i actualitza els índexs."*
+     > *"He afegit noves fotos a `Apunts Fotos/Algebra1/`. Són la continuació del tema `04. Espais Vectorials.md` (1r Curs). Passa-les a net seguint la GUIA_APUNTS.md i actualitza els índexs."*
 4. **Actualitzar els índexs:**
-   * Afegeix el llistat dels títols dels apartats (en negreta, sense informació extra) a l'índex de l'assignatura (`Índex - <Assignatura>.md`) i enllaça el tema a `Índex.md`.
+   * Afegeix el llistat dels títols dels apartats (en negreta, sense informació extra) a l'índex de l'assignatura (`Índex - <Assignatura>.md`).
+   * Assegura't que l'índex del curs (`Índex - <Curs>.md`) i el general (`Índex.md`) tenen la referència al nou tema.
    * *(Opcional en local)* Si portes el control amb `registre_fotos.csv`, marca les fotos com a processades.

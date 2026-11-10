@@ -13,6 +13,14 @@ Benvingut/da al mòdul de **Mecànica Clàssica**. Aquest bloc cobreix l'estudi 
 - **Vector acceleració**
 - **Llançament de projectils (Tir parabòlic en 2D)**
 
+### 2. [[02. Dinàmica de Sistemes de Partícules i Centre de Masses]]
+- **Concepte físic de Centre de Masses (CM)**
+- **Sistema discret de 2 partícules a la recta**
+- **Generalització a $N$ partícules en 1D i 3D**
+- **Distribucions contínues de massa (densitats $\lambda$, $\sigma$, $\rho$)**
+- **Exemples pràctics d'integració
+
 ---
 *Enllaços de navegació:*
-- [[Índex|← Tornar a l'Índex Principal]]
+- [[Índex|← Tornar a l'Índex General del Grau]]
+- [[Índex - 1r Curs|← Tornar a l'Índex de Primer Curs]]

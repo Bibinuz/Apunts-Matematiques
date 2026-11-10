@@ -1,6 +1,6 @@
-# Índex — Anàlisis Matemàtica
+# Índex — Anàlisi Matemàtica
 
-Benvingut/da al mòdul d'**Anàlisis Matemàtica**. Aquest bloc cobreix la teoria fonamental de la convergència de sèries numèriques, criteris de convergència absoluta i condicional, i s'estén a l'estudi rigorós de les successions i sèries de funcions, incloent-hi la convergència uniforme i les sèries de potències.
+Benvingut/da al mòdul d'**Anàlisi Matemàtica**. Aquest bloc cobreix la teoria fonamental de la convergència de sèries numèriques, criteris de convergència absoluta i condicional, i s'estén a l'estudi rigorós de les successions i sèries de funcions, incloent-hi la convergència uniforme i les sèries de potències.
 
 ---
 
@@ -21,4 +21,5 @@ Benvingut/da al mòdul d'**Anàlisis Matemàtica**. Aquest bloc cobreix la teori
 
 ---
 *Enllaços de navegació:*
-- [[Índex|← Tornar a l'Índex Principal]]
+- [[Índex|← Tornar a l'Índex General del Grau]]
+- [[Índex - 2n Curs|← Tornar a l'Índex de Segon Curs]]

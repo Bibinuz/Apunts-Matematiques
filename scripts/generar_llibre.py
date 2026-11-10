@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
 """
-generar_llibre.py — Compila tots els apunts en un únic llibre complet (HTML / PDF).
-Ús: python3 scripts/generar_llibre.py
+generar_llibre.py — Compila els apunts en un llibre complet o per cursos (HTML / PDF).
+Ús:
+  python3 scripts/generar_llibre.py                  # Tot el grau (Llibre_Matematiques.html)
+  python3 scripts/generar_llibre.py --curs 1         # Només 1r Curs (Llibre_1r_Curs.html)
+  python3 scripts/generar_llibre.py --curs 2         # Només 2n Curs (Llibre_2n_Curs.html)
+  python3 scripts/generar_llibre.py -a "Algebra 1"   # Només una assignatura
 
 Característiques clau:
+- Suport per a l'estructura modular d'arbres per Curs (Apunts/<Curs>/<Assignatura>/).
 - Descoberta 100% dinàmica d'assignatures i capítols (sense diccionaris rígidament 'hardcoded').
-- Suport per a qualsevol quantitat d'assignatures amb numeració romana algorítmica.
+- Opcions de compilació per Curs, Assignatura individual o Compendi complet.
 - Resolució de Wikilinks d'Obsidian a ancoratges interns clicables (<a href="#cap-...">).
-- Filtratge automàtic de notes d'esmena i diagrames Mermaid (treball en brut d'Obsidian).
-- Protecció avançada de LaTeX ($ i $$) i normalització de llistes en blocs de teories/callouts.
-- Estilisme pur natiu (CSS autònom sense dependències de JS invasiu com Paged.js).
-- Regles de print CSS (@media print) per a impressió neta en PDF (salts de pàgina, protecció de fórmules).
+- Filtratge automàtic de diagrames Mermaid i enllaços de navegació Obsidian.
+- Protecció avançada de LaTeX ($ i $$) i renderització amb KaTeX.
+- Estilisme pur de llibre acadèmic amb regles CSS per a impressió en PDF.
 """
 
 import re
+import argparse
 import unicodedata
 from pathlib import Path
 from datetime import datetime
@@ -21,7 +26,8 @@ import markdown
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 APUNTS_DIR = BASE_DIR / "Apunts"
-OUTPUT_FILE = BASE_DIR / "Llibre_Matematiques.html"
+INDEX_MASTER = BASE_DIR / "Índex.md"
+DEFAULT_OUTPUT_FILE = BASE_DIR / "Llibre_Matematiques.html"
 
 MESOS = [
     "Gener", "Febrer", "Març", "Abril", "Maig", "Juny",
@@ -304,86 +310,131 @@ def processar_tema(filepath: Path, ch_id: str, wikilink_registry: dict):
     }
 
 
-def descobrir_estructura_apunts():
+def descobrir_estructura_apunts(filtre_curs=None, filtre_assignatura=None):
     """
-    Descobreix automàticament totes les assignatures i notes d'Apunts/ sense llistes hardcoded.
-    Preserva l'ordre establert a Índex.md si està present, i extreu metadades d'Índex - <Assignatura>.md.
+    Descobreix automàticament tots els cursos, assignatures i notes d'Apunts/.
+    Suporta la jerarquia modular:
+      Apunts/<Curs>/<Assignatura>/
+    on cada assignatura conté les seves notes i el seu Índex - <Assignatura>.md.
     """
-    index_master = APUNTS_DIR / "Índex.md"
     master_order = []
-    if index_master.exists():
+    if INDEX_MASTER.exists():
         try:
-            content = index_master.read_text(encoding="utf-8")
-            matches = re.findall(r"###\s*\d+\.\s*\[\[([^\|\]]+)(?:\|([^\]]+))?\]\]", content)
-            for target, _ in matches:
-                clean_target = re.sub(r"^Índex\s*-\s*", "", target)
-                master_order.append(normalitzar_text(clean_target))
+            content = INDEX_MASTER.read_text(encoding="utf-8")
+            matches = re.findall(r"\[\[(?:Índex\s*-\s*)?([^\|\]]+)(?:\|([^\]]+))?\]\]", content)
+            for m in matches:
+                target = m[0].strip()
+                master_order.append(normalitzar_text(target))
         except Exception:
             pass
 
-    index_files = list(APUNTS_DIR.glob("Índex - *.md"))
-    subdirs = [d for d in APUNTS_DIR.iterdir() if d.is_dir() and not d.name.startswith(".")]
-
-    def get_order_key(d: Path):
-        d_norm = normalitzar_text(d.name)
-        if d_norm in master_order:
-            return (0, master_order.index(d_norm))
-        return (1, d.name)
-
-    subdirs.sort(key=get_order_key)
+    # Detectar subdirectoris de cursos dins d'Apunts/
+    course_dirs = [d for d in APUNTS_DIR.iterdir() if d.is_dir() and not d.name.startswith(".")]
+    course_dirs.sort(key=natural_sort_key)
 
     subjects_data = []
 
-    for d in subdirs:
-        d_norm = normalitzar_text(d.name)
-        matched_idx = None
-        for idx_file in index_files:
-            m = re.match(r"Índex\s*-\s*(.+)\.md", idx_file.name)
-            if m and normalitzar_text(m.group(1)) == d_norm:
-                matched_idx = idx_file
+    for cdir in course_dirs:
+        c_norm = normalitzar_text(cdir.name)
+
+        # Aplicar filtre de curs si s'ha especificat
+        if filtre_curs:
+            f_norm = normalitzar_text(str(filtre_curs))
+            # Comprova si coincideix amb el número o etiqueta ("1", "1r", etc.)
+            if f_norm not in c_norm and (f_norm + "r") not in c_norm and (f_norm + "n") not in c_norm:
+                continue
+
+        # Llegir metadades de l'índex del curs si existeix
+        curs_title = cdir.name
+        curs_idx = cdir / f"Índex - {cdir.name}.md"
+        if not curs_idx.exists():
+            for f in cdir.glob("Índex - *.md"):
+                curs_idx = f
                 break
-
-        subject_title = d.name
-        subject_desc = ""
-
-        if matched_idx and matched_idx.exists():
+        if curs_idx.exists():
             try:
-                idx_content = matched_idx.read_text(encoding="utf-8")
-                m_title = re.search(r"^#\s+(?:Índex\s*[—–-]\s*)?(.+)$", idx_content, re.MULTILINE)
-                if m_title:
-                    subject_title = m_title.group(1).strip()
-
-                lines = idx_content.strip().splitlines()
-                desc_lines = []
-                in_desc = False
-                for l in lines:
-                    sl = l.strip()
-                    if sl.startswith("# ") and not in_desc:
-                        in_desc = True
-                        continue
-                    if in_desc:
-                        if re.match(r"^(?:---|___|\*\*\*|##)", sl):
-                            break
-                        desc_lines.append(l)
-                subject_desc = "\n".join(desc_lines).strip()
+                m_t = re.search(r"^#\s+(?:Índex\s*[—–-]\s*)?(.+)$", curs_idx.read_text(encoding="utf-8"), re.MULTILINE)
+                if m_t:
+                    curs_title = m_t.group(1).strip()
             except Exception:
                 pass
 
-        notes = [f for f in d.glob("*.md") if not f.name.startswith(".")]
-        notes.sort(key=natural_sort_key)
+        # Buscar assignatures dins del curs
+        subdirs = [d for d in cdir.iterdir() if d.is_dir() and not d.name.startswith(".")]
 
-        if notes:
-            subjects_data.append({
-                "dir_name": d.name,
-                "title": subject_title,
-                "desc": subject_desc,
-                "notes": notes
-            })
+        # Si no hi ha subdirectoris de curs, suportar mode pla de compatibilitat
+        if not subdirs:
+            notes = [f for f in cdir.glob("*.md") if not f.name.startswith(".") and not f.name.startswith("Índex")]
+            if notes:
+                subdirs = [cdir]
+                curs_title = "General"
+
+        def get_order_key(d: Path):
+            d_norm = normalitzar_text(d.name)
+            if d_norm in master_order:
+                return (0, master_order.index(d_norm))
+            return (1, d.name)
+
+        subdirs.sort(key=get_order_key)
+
+        for d in subdirs:
+            d_norm = normalitzar_text(d.name)
+
+            # Aplicar filtre d'assignatura si s'ha especificat
+            if filtre_assignatura:
+                fa_norm = normalitzar_text(str(filtre_assignatura))
+                if fa_norm not in d_norm:
+                    continue
+
+            # Buscar l'índex de l'assignatura DINS de la carpeta de l'assignatura
+            matched_idx = None
+            for idx_file in d.glob("Índex - *.md"):
+                matched_idx = idx_file
+                break
+
+            subject_title = d.name
+            subject_desc = ""
+
+            if matched_idx and matched_idx.exists():
+                try:
+                    idx_content = matched_idx.read_text(encoding="utf-8")
+                    m_title = re.search(r"^#\s+(?:Índex\s*[—–-]\s*)?(.+)$", idx_content, re.MULTILINE)
+                    if m_title:
+                        subject_title = m_title.group(1).strip()
+
+                    lines = idx_content.strip().splitlines()
+                    desc_lines = []
+                    in_desc = False
+                    for l in lines:
+                        sl = l.strip()
+                        if sl.startswith("# ") and not in_desc:
+                            in_desc = True
+                            continue
+                        if in_desc:
+                            if re.match(r"^(?:---|___|\*\*\*|##)", sl):
+                                break
+                            desc_lines.append(l)
+                    subject_desc = "\n".join(desc_lines).strip()
+                except Exception:
+                    pass
+
+            notes = [f for f in d.glob("*.md") if not f.name.startswith(".") and not f.name.startswith("Índex")]
+            notes.sort(key=natural_sort_key)
+
+            if notes:
+                subjects_data.append({
+                    "curs_code": cdir.name,
+                    "curs_title": curs_title,
+                    "dir_name": d.name,
+                    "title": subject_title,
+                    "desc": subject_desc,
+                    "notes": notes
+                })
 
     return subjects_data
 
 
-def generar_html(parts: list) -> str:
+def generar_html(parts: list, titol_llibre: str = "Compendi General de Matemàtiques", subtitol: str = "Apunts Teòrics, Teoremes i Demostracions") -> str:
     """Genera el document HTML complet amb portada, índex estilitzat i estil de llibre impecable."""
     now = datetime.now()
     data_str = f"{MESOS[now.month - 1]} de {now.year}"
@@ -391,7 +442,17 @@ def generar_html(parts: list) -> str:
     # 1. Taula de continguts global (TOC)
     toc = ['<div class="toc-container" id="taula-de-continguts">']
     toc.append('  <div class="toc-title">Taula de Continguts</div>')
+
+    # Detectar si hi ha múltiples cursos
+    distints_cursos = len(set(p.get("curs_title") for p in parts)) > 1
+    current_curs = None
+
     for idx, part in enumerate(parts):
+        curs = part.get("curs_title")
+        if distints_cursos and curs and curs != current_curs:
+            current_curs = curs
+            toc.append(f'  <div class="toc-course-heading">{curs}</div>')
+
         roman = to_roman(idx + 1)
         part_id = f"part-{idx + 1}"
         toc.append(f'  <div class="toc-part"><a href="#{part_id}">Part {roman} — {part["title"]}</a></div>')
@@ -605,6 +666,19 @@ def generar_html(parts: list) -> str:
       margin-bottom: 25px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+    }}
+
+    .toc-course-heading {{
+      font-family: var(--font-heading);
+      font-size: 13pt;
+      font-weight: 800;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #93c5fd;
     }}
 
     .toc-part {{
@@ -927,9 +1001,9 @@ def generar_html(parts: list) -> str:
         <div class="cover-degree">Grau de Matemàtiques</div>
       </div>
       <div class="cover-main">
-        <h1 class="cover-title">Compendi General de Matemàtiques</h1>
+        <h1 class="cover-title">{titol_llibre}</h1>
         <div class="cover-divider"></div>
-        <div class="cover-subtitle">Apunts Teòrics, Teoremes i Demostracions</div>
+        <div class="cover-subtitle">{subtitol}</div>
       </div>
       <div class="cover-footer">
         <div>Facultat de Ciències · Universitat Autònoma de Barcelona</div>
@@ -950,19 +1024,70 @@ def generar_html(parts: list) -> str:
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description="Compila els apunts de Matemàtiques UAB en un llibre HTML/PDF."
+    )
+    parser.add_argument(
+        "-c", "--curs",
+        help="Filtra per curs (ex: 1, 2, '1r', '2n')."
+    )
+    parser.add_argument(
+        "-a", "--assignatura",
+        help="Filtra per nom d'assignatura (ex: 'Algebra 1', 'Funcions', 'Mecanica', 'Analisi')."
+    )
+    parser.add_argument(
+        "-o", "--output",
+        help="Ruta o nom del fitxer HTML de sortida."
+    )
+    parser.add_argument(
+        "--tots",
+        action="store_true",
+        help="Compila totes les assignatures de tots els cursos (comportament per defecte)."
+    )
+
+    args = parser.parse_args()
+
     if not APUNTS_DIR.exists():
         print(f"Error: No s'ha trobat el directori d'apunts a: {APUNTS_DIR}")
         return
 
-    print("Compilant tots els apunts en un únic llibre...")
-
-    # 1. Descoberta dinàmica d'assignatures i temes
-    subjects_data = descobrir_estructura_apunts()
+    # 1. Descoberta dinàmica d'assignatures i temes segons filtres
+    subjects_data = descobrir_estructura_apunts(filtre_curs=args.curs, filtre_assignatura=args.assignatura)
     if not subjects_data:
-        print("Error: No s'han trobat assignatures amb fitxers .md a Apunts/")
+        msg = "Error: No s'han trobat assignatures amb fitxers .md per als filtres indicats."
+        if args.curs:
+            msg += f" [Curs: '{args.curs}']"
+        if args.assignatura:
+            msg += f" [Assignatura: '{args.assignatura}']"
+        print(msg)
         return
 
-    # 2. Construcció del registre global de wikilinks (Stem -> cap_id)
+    # 2. Resolució de títols i fitxer de sortida
+    if args.output:
+        out_path = Path(args.output).resolve()
+    elif args.assignatura and len(subjects_data) == 1:
+        s_slug = slugify(subjects_data[0]["dir_name"])
+        out_path = BASE_DIR / f"Llibre_{s_slug}.html"
+    elif args.curs:
+        c_slug = slugify(subjects_data[0]["curs_code"])
+        out_path = BASE_DIR / f"Llibre_{c_slug}.html"
+    else:
+        out_path = DEFAULT_OUTPUT_FILE
+
+    if args.assignatura and len(subjects_data) == 1:
+        titol = f"{subjects_data[0]['title']}"
+        subtitol = f"Apunts Teòrics i Demostracions · {subjects_data[0]['curs_title']}"
+    elif args.curs:
+        titol = f"Compendi de {subjects_data[0]['curs_title']}"
+        mat_names = " · ".join([s["title"] for s in subjects_data])
+        subtitol = mat_names if len(mat_names) < 120 else "Apunts Teòrics, Teoremes i Demostracions"
+    else:
+        titol = "Compendi General de Matemàtiques"
+        subtitol = "Apunts Teòrics, Teoremes i Demostracions"
+
+    print(f"Compilant llibre: '{titol}'...")
+
+    # 3. Construcció del registre global de wikilinks (Stem -> cap_id)
     wikilink_registry = {}
     total_notes_plan = 0
 
@@ -981,7 +1106,7 @@ def main():
             if clean_stem != n.stem:
                 wikilink_registry[clean_stem] = cid
 
-    # 3. Processament de totes les parts i temes
+    # 4. Processament de totes les parts i temes
     parts = []
     total_temes = 0
 
@@ -995,20 +1120,22 @@ def main():
             total_temes += 1
 
         parts.append({
+            "curs_code": s.get("curs_code", ""),
+            "curs_title": s.get("curs_title", ""),
             "title": s["title"],
             "dir_name": s["dir_name"],
             "desc": s["desc"],
             "chapters": chapters
         })
 
-    # 4. Generació de l'HTML complet
-    html = generar_html(parts)
+    # 5. Generació de l'HTML complet
+    html = generar_html(parts, titol_llibre=titol, subtitol=subtitol)
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
 
     print(f"Llibre generat correctament ({total_temes} temes de {len(parts)} assignatures inclosos) a:")
-    print(f"   {OUTPUT_FILE.resolve()}")
+    print(f"   {out_path.resolve()}")
     print("\nPer obtenir el PDF:")
     print("   Obre el fitxer al navegador i prem el botó 'Desar en PDF' (o Ctrl + P).")
 

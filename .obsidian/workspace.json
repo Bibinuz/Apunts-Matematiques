@@ -4,49 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "e38355cd7217aa77",
+        "id": "02cfdafb709460ac",
         "type": "tabs",
         "children": [
           {
-            "id": "91d61b225b687e78",
+            "id": "b500f56167f8c69f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
+                "file": "Apunts/1r Curs/Mecanica Classica/02. Dinàmica de Sistemes de Partícules i Centre de Masses.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01. Els Nombres Reals i Propietats Fonamentals"
-            }
-          },
-          {
-            "id": "47fa8dc90c53cacb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Apunts/Analisis Matematica/02. Successions i sèries de funcions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "02. Successions i sèries de funcions"
-            }
-          },
-          {
-            "id": "ffcf15bebaa0839f",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "02. Dinàmica de Sistemes de Partícules i Centre de Masses"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -71,7 +46,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de fitxers"
             }
           },
           {
@@ -80,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "llibreta",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -88,7 +63,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Cerca"
             }
           },
           {
@@ -204,64 +179,61 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:Obre el selector ràpid": false,
+      "graph:Obre la vista gràfica": false,
+      "canvas:Crea un llenç nou": false,
+      "daily-notes:Obre la nota d'avui": false,
+      "templates:Inserir plantilla": false,
+      "command-palette:Obre la paleta d'ordres": false,
+      "bases:Crea una base nova": false
     }
   },
-  "active": "92d4149d599e2a8e",
+  "active": "b500f56167f8c69f",
   "lastOpenFiles": [
-    "Apunts/Analisis Matematica",
-    "Apunts/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
-    "Apunts/Analisis Matematica/02. Successions i sèries de funcions.md",
-    "Apunts/Analisis Matematica/01. Sèries Numèriques.md",
+    "Apunts/1r Curs/Índex - 1r Curs.md",
+    "Apunts/1r Curs/Mecanica Classica/01. Cinemàtica en 2D i 3D.md",
+    "Apunts/1r Curs/Mecanica Classica/02. Dinàmica de Sistemes de Partícules i Centre de Masses.md",
+    "Apunts/1r Curs/Fonaments 1/Índex - Fonaments 1.md",
+    "Índex.md",
+    "Apunts/1r Curs/Mecanica Classica/Índex - Mecànica Clàssica.md",
+    "Apunts/2n Curs/Índex - 2n Curs.md",
+    "Apunts/1r Curs/Algebra 1/04. Espais Vectorials.md",
+    "Apunts/1r Curs/Algebra 1/Índex - Àlgebra 1.md",
+    "Llibre_algebra-1.html",
+    "Llibre_2n-curs.html",
+    "Llibre_1r-curs.html",
+    "Índex - Anàlisis Matemàtica.md",
     "Apunts/Índex - Anàlisis Matemàtica.md",
-    "Índex - Anàlisi Matemàtica.md",
-    "Apunts/Índex.md",
-    "Apunts/Índex - Funcions 1.md",
-    "GUIA_APUNTS.md",
-    "Apunts/Índex - Àlgebra 1.md",
-    "Untitled.base",
-    "2026-11-07.md",
-    "Untitled 1.canvas",
-    "Untitled.canvas",
-    "Apunts/Funcions 1/02. Cardinalitat i Numerabilitat.md",
-    "Apunts/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
-    "Apunts/Algebra 1/03. Determinants.md",
-    "Apunts/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
-    "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
-    "Llibre_Fonaments_Parcial1.html",
-    "Llibre_Fonaments_1.html",
-    "Llibre_Matematiques.html",
-    "scripts/generar_llibre.py",
-    "scripts",
-    "Apunts/Índex - Fonaments 1.md",
-    "Apunts/Fonaments 1/03. Relacions Binàries i Ordre.md",
-    "Apunts/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
-    "Apunts/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
-    "Apunts/Fonaments 1/04. Relacions d'Equivalència.md",
-    "03. Relacions Binàries, Equivalència i Ordre.md",
-    "Apunts/Algebra 1/04. Espais Vectorials.md",
-    "Apunts/Fonaments 1/03. Relacions Binàries, Equivalència i Ordre.md",
-    "README.md",
+    "Apunts/2n Curs/Analisi Matematica/Índex - Anàlisi Matemàtica.md",
+    "Apunts/2n Curs/Analisi Matematica/02. Successions i sèries de funcions.md",
+    "Apunts/2n Curs/Analisi Matematica/01. Sèries Numèriques.md",
+    "Apunts/2n Curs/Analisi Matematica",
+    "Apunts/1r Curs/Mecanica Classica",
+    "Apunts/1r Curs/Funcions 1/Índex - Funcions 1.md",
+    "Apunts/1r Curs/Funcions 1/03. Successions de Nombres Reals.md",
+    "Apunts/1r Curs/Funcions 1/02. Cardinalitat i Numerabilitat.md",
+    "Apunts/1r Curs/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
+    "Apunts/1r Curs/Funcions 1",
+    "Apunts/1r Curs/Fonaments 1/04. Relacions d'Equivalència.md",
+    "Apunts/1r Curs/Fonaments 1/03. Relacions Binàries i Ordre.md",
+    "Apunts/1r Curs/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
+    "Apunts/1r Curs/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
+    "Apunts/1r Curs/Fonaments 1",
+    "Apunts/1r Curs/Algebra 1/03. Determinants.md",
+    "Apunts/1r Curs/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
+    "Apunts/1r Curs/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
+    "Apunts/1r Curs/Algebra 1",
+    "Apunts/2n Curs",
+    "Apunts/1r Curs",
+    "Apunts Fotos/MecanicaClassica/PXL_20261110_103934517.jpg",
     "Apunts Fotos/Algebra1/PXL_20261021_172332264.jpg",
-    "Apunts Fotos/Algebra1/PXL_20261021_172326490.jpg",
-    "Apunts Fotos/Algebra1/PXL_20261021_172321622.jpg",
-    "Apunts Fotos/Fonaments1/PXL_20261021_164216364.jpg",
-    "Apunts Fotos/Fonaments1/PXL_20261021_164211780.jpg",
-    "Apunts Fotos/Fonaments1/PXL_20261021_164203161.jpg",
-    "Apunts Fotos/Fonaments1/PXL_20261021_164158074.jpg",
-    "Apunts/Índex - Mecànica Clàssica.md",
-    "Apunts Fotos/Funcions1/PXL_20261010_100712039.jpg",
-    "Apunts Fotos/Algebra1/PXL_20261010_100255035.jpg",
-    "Apunts Fotos/Algebra1/PXL_20261019_132040209.jpg",
-    "Apunts/Mecanica Classica",
-    "Apunts Fotos/MecanicaClassica",
-    "Apunts Fotos/registre_fotos.csv",
-    "Apunts/Funcions 1"
+    "Apunts Fotos/Funcions1/PXL_20261110_103759273.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261110_103751907.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261110_103747283.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261110_103741864.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261110_103736257.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261110_103731507.jpg",
+    "Apunts Fotos/Funcions1/IMG-20261106-WA0028.jpg",
+    "Apunts Fotos/Funcions1/IMG-20261106-WA0027.jpg"
   ]
 }
