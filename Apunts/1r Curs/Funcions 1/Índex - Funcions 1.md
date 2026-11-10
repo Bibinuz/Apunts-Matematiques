@@ -39,7 +39,7 @@ Benvingut/da al mòdul de **Funcions de Variable Real 1**. Aquest bloc estableix
 - **Producte d'un infinitèsim per una successió acotada**
 - **Límits infinits i escala de creixement via Binomi de Newton**
 - **Criteris avançats per al càlcul de límits**
-- **Successions parcials
+- **Successions parcials**
 
 ---
 *Enllaços de navegació:*

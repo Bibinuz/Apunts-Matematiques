@@ -29,13 +29,13 @@ Benvingut/da al mòdul de **Fonaments 1**. Aquest bloc estableix les bases del r
 - **Teorema de Cantor de caracterització de $(\mathbb{Q}, \le)$**
 
 ### 4. [[04. Relacions d'Equivalència]]
-- **Relacions d'equivalència
-- **Classes d'equivalència
-- **Conjunt quocient i projecció canònica
-- **Teorema Fonamental de la Partició
-- **Recíproc del Teorema de la Partició
-- **Propietat Universal del Conjunt Quocient
-- **Introducció als Enters Modulars ($\mathbb{Z}/n\mathbb{Z}$)
+- **Relacions d'equivalència**
+- **Classes d'equivalència**
+- **Conjunt quocient i projecció canònica**
+- **Teorema Fonamental de la Partició**
+- **Recíproc del Teorema de la Partició**
+- **Propietat Universal del Conjunt Quocient**
+- **Introducció als Enters Modulars ($\mathbb{Z}/n\mathbb{Z}$)**
 
 ---
 *Enllaços de navegació:*

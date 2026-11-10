@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/1r Curs/Mecanica Classica/02. Dinàmica de Sistemes de Partícules i Centre de Masses.md",
-                "mode": "source",
+                "file": "README.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02. Dinàmica de Sistemes de Partícules i Centre de Masses"
+              "title": "README"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "llibreta",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -161,16 +161,27 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Apunts/Índex - Àlgebra 1.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Esquema"
+            }
+          },
+          {
+            "id": "2eb40d8cc55516e5",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -179,6 +190,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "switcher:Obre el selector ràpid": false,
       "graph:Obre la vista gràfica": false,
       "canvas:Crea un llenç nou": false,
@@ -190,26 +202,29 @@
   },
   "active": "b500f56167f8c69f",
   "lastOpenFiles": [
+    "Apunts/1r Curs/Funcions 1/Índex - Funcions 1.md",
     "Apunts/1r Curs/Índex - 1r Curs.md",
-    "Apunts/1r Curs/Mecanica Classica/01. Cinemàtica en 2D i 3D.md",
-    "Apunts/1r Curs/Mecanica Classica/02. Dinàmica de Sistemes de Partícules i Centre de Masses.md",
     "Apunts/1r Curs/Fonaments 1/Índex - Fonaments 1.md",
+    "Apunts/1r Curs/Algebra 1/Índex - Àlgebra 1.md",
     "Índex.md",
+    "Apunts/1r Curs/Algebra 1/03. Determinants.md",
+    "Llibre_Matematiques.html",
+    "Apunts/2n Curs/Analisi Matematica/02. Successions i sèries de funcions.md",
+    "GUIA_APUNTS.md",
+    "Apunts/1r Curs/Mecanica Classica/02. Dinàmica de Sistemes de Partícules i Centre de Masses.md",
+    "Apunts/1r Curs/Mecanica Classica/01. Cinemàtica en 2D i 3D.md",
     "Apunts/1r Curs/Mecanica Classica/Índex - Mecànica Clàssica.md",
     "Apunts/2n Curs/Índex - 2n Curs.md",
     "Apunts/1r Curs/Algebra 1/04. Espais Vectorials.md",
-    "Apunts/1r Curs/Algebra 1/Índex - Àlgebra 1.md",
     "Llibre_algebra-1.html",
     "Llibre_2n-curs.html",
     "Llibre_1r-curs.html",
     "Índex - Anàlisis Matemàtica.md",
     "Apunts/Índex - Anàlisis Matemàtica.md",
     "Apunts/2n Curs/Analisi Matematica/Índex - Anàlisi Matemàtica.md",
-    "Apunts/2n Curs/Analisi Matematica/02. Successions i sèries de funcions.md",
     "Apunts/2n Curs/Analisi Matematica/01. Sèries Numèriques.md",
     "Apunts/2n Curs/Analisi Matematica",
     "Apunts/1r Curs/Mecanica Classica",
-    "Apunts/1r Curs/Funcions 1/Índex - Funcions 1.md",
     "Apunts/1r Curs/Funcions 1/03. Successions de Nombres Reals.md",
     "Apunts/1r Curs/Funcions 1/02. Cardinalitat i Numerabilitat.md",
     "Apunts/1r Curs/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
@@ -219,12 +234,9 @@
     "Apunts/1r Curs/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
     "Apunts/1r Curs/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
     "Apunts/1r Curs/Fonaments 1",
-    "Apunts/1r Curs/Algebra 1/03. Determinants.md",
     "Apunts/1r Curs/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
-    "Apunts/1r Curs/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
     "Apunts/1r Curs/Algebra 1",
     "Apunts/2n Curs",
-    "Apunts/1r Curs",
     "Apunts Fotos/MecanicaClassica/PXL_20261110_103934517.jpg",
     "Apunts Fotos/Algebra1/PXL_20261021_172332264.jpg",
     "Apunts Fotos/Funcions1/PXL_20261110_103759273.jpg",

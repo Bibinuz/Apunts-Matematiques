@@ -4,32 +4,6 @@ Benvingut/da al **Repositori Centralitzat d'Apunts del Grau de Matemàtiques** a
 
 ---
 
-## Estructura de l'Arca d'Obsidian
-
-L'arca està dissenyada per mantenir la barra lateral neta, modular i escalable mitjançant una jerarquia clara:
-
-```
-Matematiques/ (Arrel de l'Arca)
-├── Índex.md (Portal General del Grau)
-├── README.md
-├── GUIA_APUNTS.md
-├── Apunts/
-│   ├── 1r Curs/
-│   │   ├── Índex - 1r Curs.md
-│   │   ├── Algebra 1/
-│   │   ├── Fonaments 1/
-│   │   ├── Funcions 1/
-│   │   └── Mecanica Classica/
-│   └── 2n Curs/
-│       ├── Índex - 2n Curs.md
-│       └── Analisi Matematica/
-├── scripts/
-│   └── generar_llibre.py
-└── Llibre_Matematiques.html
-```
-
----
-
 ### 1. [[Índex - 1r Curs|Primer Curs]]
 Assignatures troncals i formació bàsica de primer any:
 - **[[Índex - Àlgebra 1|Àlgebra Lineal 1]]:** Sistemes d'equacions lineals, matrius, determinants i espais vectorials.
@@ -42,16 +16,6 @@ Assignatures troncals i formació bàsica de primer any:
 ### 2. [[Índex - 2n Curs|Segon Curs]]
 Assignatures avançades de segon any:
 - **[[Índex - Anàlisi Matemàtica|Anàlisi Matemàtica]]:** Sèries numèriques, convergència absoluta, successions i sèries de funcions, convergència uniforme, sèries de potències, integrals impròpies i sèries de Fourier.
-
----
-
-### 3. Tercer Curs
-*(Curs no iniciat en aquesta arca. S'afegiran les assignatures a mesura que s'iniciï la seva docència).*
-
----
-
-### 4. Quart Curs
-*(Curs no iniciat en aquesta arca. S'afegiran les assignatures a mesura que s'iniciï la seva docència).*
 
 ---
 

@@ -50,7 +50,7 @@ No cal saber fer servir la terminal ni comandes complexes de Git:
 
 ## Instruccions d'Ús
 
-- **Punt d'inici:** Comença a [`Índex.md`](Índex.md) (a l'arrel de l'arca) per veure la distribució global de tots els cursos (1r a 4t) i les assignatures en curs.
+- **Punt d'inici:** Comença a [`Índex.md`](Índex.md) (a l'arrel de l'arca) per veure la distribució global de tots els cursos i les assignatures en curs.
 - **Navegació ràpida:** 
   - Prem `Ctrl + O` (o `Cmd + O` a macOS) per cercar i obrir qualsevol nota instantàniament pel seu nom.
   - Els enllaços interns tipus `[[Títol de la Nota]]` permeten navegar entre temes, lemes i referències creuades.

@@ -32,13 +32,13 @@ Benvingut/da al mòdul d'**Àlgebra 1**. Aquest bloc cobreix la teoria fonamenta
 
 ### 4. [[04. Espais Vectorials]]
 - **Estructura algebraica de cos**
-- **Exemples de cossos
-- **Definició axiomàtica d'espai vectorial
-- **Exemples d'espais vectorials
-- **Propietats fonamentals derivades
-- **Subespais vectorials
-- **Combinacions lineals i subespais generats
-- **Dependència i independència lineal
+- **Exemples de cossos**
+- **Definició axiomàtica d'espai vectorial**
+- **Exemples d'espais vectorials**
+- **Propietats fonamentals derivades**
+- **Subespais vectorials**
+- **Combinacions lineals i subespais generats**
+- **Dependència i independència lineal**
 
 ---
 *Enllaços de navegació:*
