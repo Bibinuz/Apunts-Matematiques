@@ -20,6 +20,10 @@ Apunts Fotos/**/*.webp
 # Obsidian: estat local de la sessió de l'usuari
 .obsidian/workspace.json
 
+# Python
+__pycache__/
+*.pyc
+
 # Fitxers de sistema operatiu
 .DS_Store
 Thumbs.db

@@ -5,10 +5,12 @@ Benvingut/da al recull d'apunts del **Segon Curs del Grau de Matemàtiques (UAB)
 ---
 
 ### 1. [[Índex - Anàlisi Matemàtica|Anàlisi Matemàtica]]
-Assignatura dedicada a l'estudi rigorós de la convergència de sèries numèriques, successions i sèries de funcions, convergència uniforme, sèries de potències i teoremes d'aproximació de Weierstrass.
+Assignatura dedicada a l'estudi profund del pas al límit infinit en diferents contextos: sumes infinites de nombres reals, successions i sèries de funcions, integrals sobre dominis no acotats i el desenvolupament de funcions periòdiques en sèries de Fourier.
 - **Temes:**
   - [[01. Sèries Numèriques]]
   - [[02. Successions i sèries de funcions]]
+  - [[03. Integrals Impròpies]]
+  - [[04. Sèries de Fourier]]
 
 ---
 

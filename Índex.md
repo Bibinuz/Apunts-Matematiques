@@ -41,7 +41,7 @@ Assignatures troncals i formació bàsica de primer any:
 
 ### 2. [[Índex - 2n Curs|Segon Curs]]
 Assignatures avançades de segon any:
-- **[[Índex - Anàlisi Matemàtica|Anàlisi Matemàtica]]:** Sèries numèriques, convergència absoluta, successions i sèries de funcions, convergència uniforme i sèries de potències.
+- **[[Índex - Anàlisi Matemàtica|Anàlisi Matemàtica]]:** Sèries numèriques, convergència absoluta, successions i sèries de funcions, convergència uniforme, sèries de potències, integrals impròpies i sèries de Fourier.
 
 ---
 
