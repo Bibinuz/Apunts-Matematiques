@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
-                "mode": "source",
+                "file": "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01. Els Nombres Reals i Propietats Fonamentals"
+              "title": "03. Successions de Nombres Reals"
             }
           },
           {
@@ -27,26 +27,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/Analisis Matematica/02. Successions i sèries de funcions.md",
+                "file": "Apunts/Analisis Matematica/01. Sèries Numèriques.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02. Successions i sèries de funcions"
+              "title": "01. Sèries Numèriques"
             }
           },
           {
-            "id": "ffcf15bebaa0839f",
+            "id": "908a49caab283fc5",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Apunts/Índex - Geometria Lineal.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Índex - Geometria Lineal"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -124,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Apunts/Índex - Àlgebra 1.md",
+                "file": "Apunts/Índex - Geometria Lineal.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -186,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Apunts/Índex - Àlgebra 1.md",
+                "file": "Apunts/Índex - Geometria Lineal.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -195,12 +199,12 @@
               "title": "Outline"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,30 +214,35 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "92d4149d599e2a8e",
+  "active": "908a49caab283fc5",
   "lastOpenFiles": [
-    "Apunts/Analisis Matematica",
-    "Apunts/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
-    "Apunts/Analisis Matematica/02. Successions i sèries de funcions.md",
     "Apunts/Analisis Matematica/01. Sèries Numèriques.md",
-    "Apunts/Índex - Anàlisis Matemàtica.md",
-    "Índex - Anàlisi Matemàtica.md",
+    "Apunts/Índex - Geometria Lineal.md",
     "Apunts/Índex.md",
-    "Apunts/Índex - Funcions 1.md",
-    "GUIA_APUNTS.md",
+    "Apunts/Índex - Anàlisis Matemàtica.md",
+    "Grau de Matemàtiques — Compendi Teòric.pdf",
+    "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
+    "Apunts/Analisis Matematica/02. Successions i sèries de funcions.md",
+    "Apunts/Analisis Matematica/03. Integrals Impròpies.md",
+    "Apunts/Analisis Matematica/04. Sèries de Fourier.md",
+    "Apunts/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
+    "Apunts/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
     "Apunts/Índex - Àlgebra 1.md",
+    "GUIA_APUNTS.md",
+    "Apunts/Funcions 1/02. Cardinalitat i Numerabilitat.md",
+    "Apunts/Analisis Matematica",
+    "Índex - Anàlisi Matemàtica.md",
+    "Apunts/Índex - Funcions 1.md",
     "Untitled.base",
     "2026-11-07.md",
     "Untitled 1.canvas",
     "Untitled.canvas",
-    "Apunts/Funcions 1/02. Cardinalitat i Numerabilitat.md",
     "Apunts/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
     "Apunts/Algebra 1/03. Determinants.md",
-    "Apunts/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
-    "Apunts/Funcions 1/03. Successions de Nombres Reals.md",
     "Llibre_Fonaments_Parcial1.html",
     "Llibre_Fonaments_1.html",
     "Llibre_Matematiques.html",
@@ -247,7 +256,6 @@
     "03. Relacions Binàries, Equivalència i Ordre.md",
     "Apunts/Algebra 1/04. Espais Vectorials.md",
     "Apunts/Fonaments 1/03. Relacions Binàries, Equivalència i Ordre.md",
-    "README.md",
     "Apunts Fotos/Algebra1/PXL_20261021_172332264.jpg",
     "Apunts Fotos/Algebra1/PXL_20261021_172326490.jpg",
     "Apunts Fotos/Algebra1/PXL_20261021_172321622.jpg",
@@ -255,13 +263,10 @@
     "Apunts Fotos/Fonaments1/PXL_20261021_164211780.jpg",
     "Apunts Fotos/Fonaments1/PXL_20261021_164203161.jpg",
     "Apunts Fotos/Fonaments1/PXL_20261021_164158074.jpg",
-    "Apunts/Índex - Mecànica Clàssica.md",
     "Apunts Fotos/Funcions1/PXL_20261010_100712039.jpg",
     "Apunts Fotos/Algebra1/PXL_20261010_100255035.jpg",
     "Apunts Fotos/Algebra1/PXL_20261019_132040209.jpg",
     "Apunts/Mecanica Classica",
-    "Apunts Fotos/MecanicaClassica",
-    "Apunts Fotos/registre_fotos.csv",
-    "Apunts/Funcions 1"
+    "Apunts Fotos/MecanicaClassica"
   ]
 }

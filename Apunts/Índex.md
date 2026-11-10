@@ -57,6 +57,10 @@ Assignatura dedicada a l'estudi rigorós de la convergència de sèries, success
 - **Tema 1:** [[01. Sèries Numèriques]]
 - **Tema 2:** [[02. Successions i sèries de funcions]]
 
+---
+### 11. [[Índex - Geometria Lineal| Geometria Lineal]]
+...
+
 
 
 ## Pautes de Consulta Ràpida
