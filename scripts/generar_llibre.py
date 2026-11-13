@@ -28,6 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 APUNTS_DIR = BASE_DIR / "Apunts"
 INDEX_MASTER = BASE_DIR / "Índex.md"
 DEFAULT_OUTPUT_FILE = BASE_DIR / "Llibre_Matematiques.html"
+CSS_FILE = Path(__file__).resolve().parent / "estils_llibre.css"
 
 MESOS = [
     "Gener", "Febrer", "Març", "Abril", "Maig", "Juny",
@@ -88,8 +89,12 @@ def netejar_contingut(text: str) -> str:
     # 2. Elimina apartats d'esquema/resum que només servien per al diagrama
     text = re.sub(r"(?m)^##\s*\d*\.?\s*Esquema\s+(Resum|Global).*$", "", text)
 
-    # 3. Elimina enllaços de navegació de final de nota
-    text = re.sub(r"(?s)(---\s*)?\*+(Enllaços de navegació|Enllaços relacionats)\*+:?.*$", "", text).strip()
+    # 3. Elimina enllaços de navegació / relacionats de final de nota (admet qualsevol posició dels dos punts i asteriscs)
+    pattern_enllacos = r"(?is)(?:\n\s*---\s*)*\n*\s*(?:#{1,4}\s*)?\*+Enllaços(?:\s+de\s+navegaci[oó]|\s+relacionats)[^\n]*\*+:?.*$"
+    text = re.sub(pattern_enllacos, "", text).strip()
+
+    # 4. Elimina separadors horitzontals orfes (---) al final del document
+    text = re.sub(r"(?:\n\s*---\s*)+$", "", text).strip()
 
     return text
 
@@ -434,10 +439,19 @@ def descobrir_estructura_apunts(filtre_curs=None, filtre_assignatura=None):
     return subjects_data
 
 
+def carregar_css() -> str:
+    """Carrega el contingut del fitxer CSS d'estils. Si no existeix, retorna un missatge d'avís."""
+    if CSS_FILE.exists():
+        return CSS_FILE.read_text(encoding="utf-8")
+    print(f"Avís: No s'ha trobat el fitxer d'estils CSS a {CSS_FILE}")
+    return "/* Fitxer estils_llibre.css no trobat */"
+
+
 def generar_html(parts: list, titol_llibre: str = "Compendi General de Matemàtiques", subtitol: str = "Apunts Teòrics, Teoremes i Demostracions") -> str:
     """Genera el document HTML complet amb portada, índex estilitzat i estil de llibre impecable."""
     now = datetime.now()
     data_str = f"{MESOS[now.month - 1]} de {now.year}"
+    css_contingut = carregar_css()
 
     # 1. Taula de continguts global (TOC)
     toc = ['<div class="toc-container" id="taula-de-continguts">']
@@ -520,457 +534,9 @@ def generar_html(parts: list, titol_llibre: str = "Compendi General de Matemàti
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grau de Matemàtiques — Compendi Teòric</title>
 
-  <!-- Tipografia i estil de llibre -->
+  <!-- Tipografia i estil de llibre (carregat des de scripts/estils_llibre.css) -->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap');
-
-    :root {{
-      --font-body: 'Crimson Pro', Georgia, serif;
-      --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
-      --color-text: #1e293b;
-      --color-primary: #0f172a;
-      --color-border: #e2e8f0;
-    }}
-
-    * {{ box-sizing: border-box; }}
-
-    body {{
-      margin: 0;
-      padding: 0;
-      background: #f8fafc;
-      color: var(--color-text);
-      font-family: var(--font-body);
-      font-size: 11.5pt;
-      line-height: 1.62;
-      orphans: 2;
-      widows: 2;
-    }}
-
-    .book-container {{
-      max-width: 860px;
-      margin: 30px auto;
-      background: #ffffff;
-      padding: 70px 80px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border-radius: 4px;
-    }}
-
-    h1, h2, h3, h4, h5 {{
-      font-family: var(--font-heading);
-      color: var(--color-primary);
-      line-height: 1.25;
-      margin-top: 1.6em;
-      margin-bottom: 0.5em;
-    }}
-
-    h2.chapter-title {{
-      font-size: 20pt;
-      border-bottom: 1.5px solid var(--color-border);
-      padding-bottom: 10px;
-      margin-top: 40px;
-    }}
-
-    h3.section-title {{ font-size: 14pt; color: #1e3a8a; margin-top: 30px; }}
-    h4.subsection-title {{ font-size: 12pt; color: #334155; margin-top: 20px; }}
-
-    p {{ margin: 0 0 1em 0; text-align: justify; hyphens: auto; }}
-
-    /* Enllaços interns */
-    a.internal-link {{
-      color: #2563eb;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 2px;
-    }}
-    a.internal-link:hover {{ color: #1d4ed8; text-decoration-thickness: 2px; }}
-
-    /* Portada */
-    .cover {{
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      border: 3px double #cbd5e1;
-      margin-bottom: 50px;
-    }}
-
-    .cover-institution {{
-      font-family: var(--font-heading);
-      font-size: 11pt;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #64748b;
-    }}
-
-    .cover-faculty {{
-      font-family: var(--font-heading);
-      font-size: 10pt;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #94a3b8;
-      margin-top: 4px;
-    }}
-
-    .cover-degree {{
-      font-family: var(--font-heading);
-      font-size: 13pt;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      margin-top: 10px;
-    }}
-
-    .cover-title {{
-      font-size: 32pt;
-      font-weight: 800;
-      margin: 0 0 15px 0;
-      color: var(--color-primary);
-    }}
-
-    .cover-divider {{
-      width: 100px;
-      height: 3px;
-      background: #2563eb;
-      margin: 20px auto;
-    }}
-
-    .cover-subtitle {{
-      font-size: 14pt;
-      color: #64748b;
-      font-style: italic;
-    }}
-
-    .cover-footer {{
-      font-family: var(--font-heading);
-      font-size: 10pt;
-      color: #64748b;
-    }}
-
-    /* TOC General */
-    .toc-container {{
-      margin: 40px 0 60px 0;
-      padding: 30px 40px;
-      background: #f8fafc;
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-    }}
-
-    .toc-title {{
-      font-size: 17pt;
-      font-family: var(--font-heading);
-      text-align: center;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }}
-
-    .toc-course-heading {{
-      font-family: var(--font-heading);
-      font-size: 13pt;
-      font-weight: 800;
-      color: #1e3a8a;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 25px;
-      margin-bottom: 10px;
-      padding-bottom: 4px;
-      border-bottom: 2px solid #93c5fd;
-    }}
-
-    .toc-part {{
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 12.5pt;
-      margin-top: 20px;
-      border-bottom: 1px dashed #cbd5e1;
-      padding-bottom: 4px;
-    }}
-
-    .toc-part a {{
-      color: var(--color-primary);
-      text-decoration: none;
-    }}
-
-    .toc-part a:hover {{
-      color: #2563eb;
-      text-decoration: underline;
-    }}
-
-    .toc-chapter {{ margin-left: 15px; font-weight: 600; margin-top: 6px; }}
-    .toc-chapter a {{ color: #2563eb; text-decoration: none; }}
-    .toc-chapter a:hover {{ text-decoration: underline; }}
-    .toc-sections {{ margin-left: 35px; font-size: 9.5pt; color: #64748b; line-height: 1.5; }}
-    .toc-sections a {{ color: #475569; text-decoration: none; }}
-    .toc-sections a:hover {{ color: #2563eb; text-decoration: underline; }}
-
-    /* Pàgina de Matèria (Part) */
-    .part-page {{
-      margin: 40px 0 60px 0;
-      padding: 30px 0 20px 0;
-    }}
-
-    .part-header {{
-      margin-bottom: 25px;
-    }}
-
-    .part-number {{
-      font-family: var(--font-heading);
-      font-size: 11pt;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #2563eb;
-      margin-bottom: 6px;
-    }}
-
-    .part-title {{
-      font-size: 26pt;
-      font-weight: 800;
-      color: var(--color-primary);
-      margin: 0 0 10px 0;
-      line-height: 1.2;
-    }}
-
-    .part-rule {{
-      width: 60px;
-      height: 3px;
-      background: #2563eb;
-      margin: 12px 0 18px 0;
-    }}
-
-    .part-intro {{
-      font-size: 11pt;
-      color: #475569;
-      line-height: 1.6;
-      text-align: justify;
-    }}
-
-    .part-intro p {{
-      margin: 0;
-    }}
-
-    .part-toc {{
-      background: #f8fafc;
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-      padding: 24px 28px;
-      margin-top: 25px;
-    }}
-
-    .part-toc-title {{
-      font-family: var(--font-heading);
-      font-size: 11pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #1e293b;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #cbd5e1;
-    }}
-
-    .part-toc-grid {{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px 30px;
-    }}
-
-    .part-toc-chapter {{
-      break-inside: avoid;
-    }}
-
-    .part-toc-chapter-title {{
-      font-family: var(--font-heading);
-      font-size: 10pt;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }}
-
-    .part-toc-chapter-title a {{
-      color: #1e3a8a;
-      text-decoration: none;
-    }}
-
-    .part-toc-chapter-title a:hover {{
-      text-decoration: underline;
-    }}
-
-    .part-toc-sections {{
-      margin: 0;
-      padding-left: 18px;
-      font-size: 9pt;
-      line-height: 1.5;
-    }}
-
-    .part-toc-sections li {{
-      margin-bottom: 3px;
-    }}
-
-    .part-toc-sections li a {{
-      color: #334155;
-      text-decoration: none;
-      font-weight: 600;
-    }}
-
-    .part-toc-sections li a:hover {{
-      color: #2563eb;
-      text-decoration: underline;
-    }}
-
-    /* Callouts - Teoremes, Definicions, Proposicions */
-    .callout {{
-      margin: 1.4em 0;
-      border-radius: 4px;
-      border-left: 4.5px solid;
-      background: #f8fafc;
-      page-break-inside: auto;
-      break-inside: auto;
-    }}
-
-    .callout-header {{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      font-family: var(--font-heading);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      page-break-after: avoid;
-      break-after: avoid;
-    }}
-
-    .callout-badge {{
-      font-size: 7.5pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 2.5px 7px;
-      border-radius: 3px;
-      color: white;
-      display: inline-block;
-    }}
-
-    .callout-title {{
-      font-family: var(--font-heading);
-      font-size: 10pt;
-      font-weight: 700;
-      color: var(--color-primary);
-    }}
-
-    .callout-body {{
-      padding: 12px 16px 6px 16px;
-      page-break-inside: auto;
-      break-inside: auto;
-    }}
-    .callout-body p:last-child {{ margin-bottom: 0; }}
-
-    .callout-important {{ border-color: #2563eb; background: #f8faff; }}
-    .callout-important .callout-header {{ background: #edf2fe; color: #1e40af; }}
-    .callout-important .callout-badge {{ background: #2563eb; }}
-
-    .callout-note {{ border-color: #0284c7; background: #f0f9ff; }}
-    .callout-note .callout-header {{ background: #e0f2fe; color: #0369a1; }}
-    .callout-note .callout-badge {{ background: #0284c7; }}
-
-    .callout-warning {{ border-color: #d97706; background: #fffbeb; }}
-    .callout-warning .callout-header {{ background: #fef3c7; color: #92400e; }}
-    .callout-warning .callout-badge {{ background: #d97706; }}
-
-    .callout-tip {{ border-color: #059669; background: #f0fdf4; }}
-    .callout-tip .callout-header {{ background: #dcfce7; color: #065f46; }}
-    .callout-tip .callout-badge {{ background: #059669; }}
-
-    table {{ width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: 10.5pt; page-break-inside: auto; break-inside: auto; }}
-    tr {{ page-break-inside: avoid; break-inside: avoid; }}
-    th, td {{ border: 1px solid var(--color-border); padding: 8px 12px; }}
-    th {{ background: #f8fafc; font-family: var(--font-heading); }}
-
-    /* Botó per imprimir (pantalla) */
-    .screen-toolbar {{
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      z-index: 1000;
-    }}
-
-    .toolbar-hint {{
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(8px);
-      color: #f8fafc;
-      padding: 9px 15px;
-      border-radius: 20px;
-      font-family: var(--font-heading);
-      font-size: 9pt;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      pointer-events: none;
-    }}
-
-    .btn-print {{
-      background: #0f172a;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 30px;
-      font-family: var(--font-heading);
-      font-size: 10.5pt;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-      transition: all 0.2s;
-    }}
-
-    .btn-print:hover {{ background: #2563eb; transform: translateY(-2px); }}
-
-    /* Impressió en PDF */
-    @media print {{
-      body {{ background: white !important; font-size: 10.5pt; }}
-      .book-container {{ max-width: 100% !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; }}
-      .screen-toolbar {{ display: none !important; }}
-      @page {{
-        size: A4;
-        margin: 2.2cm 1.8cm 2.2cm 1.8cm;
-      }}
-      .cover {{ height: 100vh; margin: 0; page-break-after: always; break-after: page; }}
-      .toc-container {{ page-break-before: always; break-before: page; page-break-after: always; break-after: page; }}
-      .part-page {{
-        page-break-before: always;
-        break-before: page;
-        page-break-inside: avoid;
-        break-inside: avoid;
-        margin: 0;
-        padding: 25px 0;
-      }}
-      .part-toc {{
-        background: #ffffff !important;
-        border: 1px solid #cbd5e1;
-      }}
-      .chapter {{ page-break-before: always; break-before: page; }}
-      .katex-display {{
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-      }}
-      .callout {{
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-      }}
-      .callout-header {{
-        page-break-after: avoid !important;
-        break-after: avoid !important;
-      }}
-      .callout-body {{
-        page-break-inside: auto !important;
-        break-inside: auto !important;
-      }}
-      table {{ page-break-inside: auto; break-inside: auto; }}
-      tr {{ page-break-inside: avoid; break-inside: avoid; }}
-      h2, h3, h4 {{ page-break-after: avoid; break-after: avoid; }}
-    }}
+{css_contingut}
   </style>
 
   <!-- KaTeX -->

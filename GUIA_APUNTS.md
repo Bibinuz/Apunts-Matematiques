@@ -22,7 +22,8 @@ Matematiques/
 ├── README.md                       # Documentació i instruccions de clonació
 ├── GUIA_APUNTS.md                  # Aquesta guia
 ├── scripts/                        # Utilitats i scripts d'automatització
-│   └── generar_llibre.py           # Compilador HTML/PDF (opcions per curs/assignatura)
+│   ├── generar_llibre.py           # Compilador HTML/PDF (opcions per curs/assignatura)
+│   └── estils_llibre.css           # Full d'estils CSS modular del llibre (maquetació i impressió)
 ├── Apunts Fotos/                   # Carpeta local (no es puja a GitHub)
 │   ├── registre_fotos.csv          # Seguiment personal de fotos processades
 │   └── <NomAssignatura>/           # Fotos locals d'apunts en brut

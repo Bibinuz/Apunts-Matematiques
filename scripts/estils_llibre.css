@@ -1,0 +1,667 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   VARIABLES DE DISSENY I PALETA DE COLORS CENTRALITZADA
+   ========================================================================== */
+:root {
+  /* Tipografies */
+  --font-body: 'Crimson Pro', Georgia, serif;
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Colors bàsics de text i fons */
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --color-text: #1e293b;
+  --color-text-muted: #475569;
+  --color-muted: #64748b;
+  --color-subtle: #94a3b8;
+
+  /* Colors d'accent i capçaleres */
+  --color-primary: #0f172a;
+  --color-secondary: #334155;
+  --color-navy: #1e3a8a;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-course-border: #93c5fd;
+
+  /* Línies divisòries i vores */
+  --color-border: #e2e8f0;
+  --color-border-dark: #cbd5e1;
+
+  /* Callouts — IMPORTANT (Teoremes, Definicions) */
+  --callout-important-border: #2563eb;
+  --callout-important-bg: #f8faff;
+  --callout-important-header: #edf2fe;
+  --callout-important-text: #1e40af;
+
+  /* Callouts — NOTE (Proposicions, Lemes, Observacions, Corol·laris) */
+  --callout-note-border: #0284c7;
+  --callout-note-bg: #f0f9ff;
+  --callout-note-header: #e0f2fe;
+  --callout-note-text: #0369a1;
+
+  /* Callouts — WARNING (Atenció, Alerta) */
+  --callout-warning-border: #d97706;
+  --callout-warning-bg: #fffbeb;
+  --callout-warning-header: #fef3c7;
+  --callout-warning-text: #92400e;
+
+  /* Callouts — TIP (Intuïció, Exemples) */
+  --callout-tip-border: #059669;
+  --callout-tip-bg: #f0fdf4;
+  --callout-tip-header: #dcfce7;
+  --callout-tip-text: #065f46;
+
+  /* Elements flotants de pantalla */
+  --bg-toolbar: rgba(15, 23, 42, 0.88);
+}
+
+/* ==========================================================================
+   ESTILS GENERALS I CONTENIDORS
+   ========================================================================== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-page);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 11.5pt;
+  line-height: 1.62;
+  orphans: 2;
+  widows: 2;
+}
+
+.book-container {
+  max-width: 860px;
+  margin: 30px auto;
+  background: var(--bg-card);
+  padding: 70px 80px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+}
+
+h2.chapter-title {
+  font-size: 20pt;
+  border-bottom: 1.5px solid var(--color-border);
+  padding-bottom: 10px;
+  margin-top: 40px;
+}
+
+h3.section-title {
+  font-size: 14pt;
+  color: var(--color-navy);
+  margin-top: 30px;
+}
+
+h4.subsection-title {
+  font-size: 12pt;
+  color: var(--color-secondary);
+  margin-top: 20px;
+}
+
+p {
+  margin: 0 0 1em 0;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ==========================================================================
+   ENLLAÇOS INTERNS (WIKILINKS D'OBSIDIAN)
+   ========================================================================== */
+a.internal-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a.internal-link:hover {
+  color: var(--color-accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+/* ==========================================================================
+   PORTADA ACADÈMICA
+   ========================================================================== */
+.cover {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  border: 3px double var(--color-border-dark);
+  margin-bottom: 50px;
+}
+
+.cover-institution {
+  font-family: var(--font-heading);
+  font-size: 11pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.cover-faculty {
+  font-family: var(--font-heading);
+  font-size: 10pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-subtle);
+  margin-top: 4px;
+}
+
+.cover-degree {
+  font-family: var(--font-heading);
+  font-size: 13pt;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-top: 10px;
+}
+
+.cover-title {
+  font-size: 32pt;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  color: var(--color-primary);
+}
+
+.cover-divider {
+  width: 100px;
+  height: 3px;
+  background: var(--color-accent);
+  margin: 20px auto;
+}
+
+.cover-subtitle {
+  font-size: 14pt;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.cover-footer {
+  font-family: var(--font-heading);
+  font-size: 10pt;
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   TAULA DE CONTINGUTS (TOC GENERAL)
+   ========================================================================== */
+.toc-container {
+  margin: 40px 0 60px 0;
+  padding: 30px 40px;
+  background: var(--bg-page);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.toc-title {
+  font-size: 17pt;
+  font-family: var(--font-heading);
+  text-align: center;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.toc-course-heading {
+  font-family: var(--font-heading);
+  font-size: 13pt;
+  font-weight: 800;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--color-course-border);
+}
+
+.toc-part {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12.5pt;
+  margin-top: 20px;
+  border-bottom: 1px dashed var(--color-border-dark);
+  padding-bottom: 4px;
+}
+
+.toc-part a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.toc-part a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.toc-chapter {
+  margin-left: 15px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.toc-chapter a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.toc-chapter a:hover {
+  text-decoration: underline;
+}
+
+.toc-sections {
+  margin-left: 35px;
+  font-size: 9.5pt;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.toc-sections a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.toc-sections a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   PÀGINA DE MATÈRIA (PART / ASSIGNATURA)
+   ========================================================================== */
+.part-page {
+  margin: 40px 0 60px 0;
+  padding: 30px 0 20px 0;
+}
+
+.part-header {
+  margin-bottom: 25px;
+}
+
+.part-number {
+  font-family: var(--font-heading);
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+.part-title {
+  font-size: 26pt;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.part-rule {
+  width: 60px;
+  height: 3px;
+  background: var(--color-accent);
+  margin: 12px 0 18px 0;
+}
+
+.part-intro {
+  font-size: 11pt;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.part-intro p {
+  margin: 0;
+}
+
+.part-toc {
+  background: var(--bg-page);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 24px 28px;
+  margin-top: 25px;
+}
+
+.part-toc-title {
+  font-family: var(--font-heading);
+  font-size: 11pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.part-toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px 30px;
+}
+
+.part-toc-chapter {
+  break-inside: avoid;
+}
+
+.part-toc-chapter-title {
+  font-family: var(--font-heading);
+  font-size: 10pt;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.part-toc-chapter-title a {
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.part-toc-chapter-title a:hover {
+  text-decoration: underline;
+}
+
+.part-toc-sections {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 9pt;
+  line-height: 1.5;
+}
+
+.part-toc-sections li {
+  margin-bottom: 3px;
+}
+
+.part-toc-sections li a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.part-toc-sections li a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   CALLOUTS — TEOREMES, DEFINICIONS, PROPOSICIONS, ETC.
+   ========================================================================== */
+.callout {
+  margin: 1.4em 0;
+  border-radius: 4px;
+  border-left: 4.5px solid;
+  background: var(--bg-page);
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.callout-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  font-family: var(--font-heading);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.callout-badge {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2.5px 7px;
+  border-radius: 3px;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.callout-title {
+  font-family: var(--font-heading);
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.callout-body {
+  padding: 12px 16px 6px 16px;
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+.callout-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Callout Important (Teoremes, Definicions) */
+.callout-important {
+  border-color: var(--callout-important-border);
+  background: var(--callout-important-bg);
+}
+.callout-important .callout-header {
+  background: var(--callout-important-header);
+  color: var(--callout-important-text);
+}
+.callout-important .callout-badge {
+  background: var(--callout-important-border);
+}
+
+/* Callout Note (Proposicions, Lemes, Observacions, Corol·laris) */
+.callout-note {
+  border-color: var(--callout-note-border);
+  background: var(--callout-note-bg);
+}
+.callout-note .callout-header {
+  background: var(--callout-note-header);
+  color: var(--callout-note-text);
+}
+.callout-note .callout-badge {
+  background: var(--callout-note-border);
+}
+
+/* Callout Warning (Atenció, Alerta) */
+.callout-warning {
+  border-color: var(--callout-warning-border);
+  background: var(--callout-warning-bg);
+}
+.callout-warning .callout-header {
+  background: var(--callout-warning-header);
+  color: var(--callout-warning-text);
+}
+.callout-warning .callout-badge {
+  background: var(--callout-warning-border);
+}
+
+/* Callout Tip (Intuïció, Exemples) */
+.callout-tip {
+  border-color: var(--callout-tip-border);
+  background: var(--callout-tip-bg);
+}
+.callout-tip .callout-header {
+  background: var(--callout-tip-header);
+  color: var(--callout-tip-text);
+}
+.callout-tip .callout-badge {
+  background: var(--callout-tip-border);
+}
+
+/* ==========================================================================
+   TAULES DE DADES
+   ========================================================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 10.5pt;
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+th, td {
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+}
+
+th {
+  background: var(--bg-page);
+  font-family: var(--font-heading);
+}
+
+/* ==========================================================================
+   BARRA D'EINES I BOTÓ PER IMPRIMIR (PANTALLA)
+   ========================================================================== */
+.screen-toolbar {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.toolbar-hint {
+  background: var(--bg-toolbar);
+  backdrop-filter: blur(8px);
+  color: var(--bg-page);
+  padding: 9px 15px;
+  border-radius: 20px;
+  font-family: var(--font-heading);
+  font-size: 9pt;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.btn-print {
+  background: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-family: var(--font-heading);
+  font-size: 10.5pt;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+}
+
+.btn-print:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   REGLES D'IMPRESSIÓ PER A DESAR EN PDF (@media print)
+   ========================================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    font-size: 10.5pt;
+  }
+
+  .book-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .screen-toolbar {
+    display: none !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 2.2cm 1.8cm 2.2cm 1.8cm;
+  }
+
+  .cover {
+    height: 100vh;
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .toc-container {
+    page-break-before: always;
+    break-before: page;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .part-page {
+    page-break-before: always;
+    break-before: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin: 0;
+    padding: 25px 0;
+  }
+
+  .part-toc {
+    background: #ffffff !important;
+    border: 1px solid var(--color-border-dark);
+  }
+
+  .chapter {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .katex-display {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .callout {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .callout-header {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .callout-body {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  table {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  h2, h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}
