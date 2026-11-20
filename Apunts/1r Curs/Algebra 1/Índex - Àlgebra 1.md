@@ -39,6 +39,12 @@ Benvingut/da al mòdul d'**Àlgebra 1**. Aquest bloc cobreix la teoria fonamenta
 - **Subespais vectorials**
 - **Combinacions lineals i subespais generats**
 - **Dependència i independència lineal**
+- **Sistemes generadors i espais finitament generats**
+- **Bases d'un espai vectorial**
+- **Coordenades respecte d'una base**
+- **Teorema d'intercanvi de Steinitz**
+- **Dimensió d'un espai vectorial i corol·laris**
+- **Càlcul efectiu de bases mitjançant matrius**
 
 ---
 *Enllaços de navegació:*

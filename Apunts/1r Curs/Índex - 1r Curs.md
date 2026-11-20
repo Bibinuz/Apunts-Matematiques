@@ -21,6 +21,7 @@ Assignatura que estableix el llenguatge formal, la lògica matemàtica, mètodes
   - [[02. Teoria de Conjunts i Construccions Fonamentals]]
   - [[03. Relacions Binàries i Ordre]]
   - [[04. Relacions d'Equivalència]]
+  - [[05. Enters Modulars]]
 
 ---
 

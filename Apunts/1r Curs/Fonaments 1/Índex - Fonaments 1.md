@@ -35,7 +35,13 @@ Benvingut/da al mòdul de **Fonaments 1**. Aquest bloc estableix les bases del r
 - **Teorema Fonamental de la Partició**
 - **Recíproc del Teorema de la Partició**
 - **Propietat Universal del Conjunt Quocient**
-- **Introducció als Enters Modulars ($\mathbb{Z}/n\mathbb{Z}$)**
+### 5. [[05. Enters Modulars]]
+- **L'estructura dels nombres enters $(\mathbb{Z}, +, \cdot, \le)$**
+- **Subconjunts $m\mathbb{Z}$ (múltiples i ideals)**
+- **Relació de congruència mòdul $m$**
+- **Estructura d'anell quocient de $\mathbb{Z}/n\mathbb{Z}$**
+- **Divisió euclidiana i representants canònics**
+- **Existència d'inversos i cossos finits $\mathbb{Z}/p\mathbb{Z}$**
 
 ---
 *Enllaços de navegació:*
