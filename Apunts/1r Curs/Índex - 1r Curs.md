@@ -31,6 +31,7 @@ Assignatura dedicada a l'anàlisi matemàtica rigorosa a la recta real $\mathbb{
   - [[01. Els Nombres Reals i Propietats Fonamentals]]
   - [[02. Cardinalitat i Numerabilitat]]
   - [[03. Successions de Nombres Reals]]
+  - [[04. Teoria de Subsuccessions]]
 
 ---
 

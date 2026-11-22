@@ -12,7 +12,6 @@ Característiques clau:
 - Descoberta 100% dinàmica d'assignatures i capítols (sense diccionaris rígidament 'hardcoded').
 - Opcions de compilació per Curs, Assignatura individual o Compendi complet.
 - Resolució de Wikilinks d'Obsidian a ancoratges interns clicables (<a href="#cap-...">).
-- Filtratge automàtic de diagrames Mermaid i enllaços de navegació Obsidian.
 - Protecció avançada de LaTeX ($ i $$) i renderització amb KaTeX.
 - Estilisme pur de llibre acadèmic amb regles CSS per a impressió en PDF.
 """
@@ -80,20 +79,14 @@ def natural_sort_key(path: Path):
 
 def netejar_contingut(text: str) -> str:
     """
-    Elimina diagrames Mermaid, apartats d'esquema resum i enllaços de navegació de final de nota.
+    Elimina enllaços de navegació de final de nota.
     Els wikilinks es preserven perquè seran resolts a ancoratges interns.
     """
-    # 1. Elimina blocs Mermaid
-    text = re.sub(r"```mermaid[\s\S]*?```", "", text)
-
-    # 2. Elimina apartats d'esquema/resum que només servien per al diagrama
-    text = re.sub(r"(?m)^##\s*\d*\.?\s*Esquema\s+(Resum|Global).*$", "", text)
-
-    # 3. Elimina enllaços de navegació / relacionats de final de nota (admet qualsevol posició dels dos punts i asteriscs)
+    # 1. Elimina enllaços de navegació / relacionats de final de nota (admet qualsevol posició dels dos punts i asteriscs)
     pattern_enllacos = r"(?is)(?:\n\s*---\s*)*\n*\s*(?:#{1,4}\s*)?\*+Enllaços(?:\s+de\s+navegaci[oó]|\s+relacionats)[^\n]*\*+:?.*$"
     text = re.sub(pattern_enllacos, "", text).strip()
 
-    # 4. Elimina separadors horitzontals orfes (---) al final del document
+    # 2. Elimina separadors horitzontals orfes (---) al final del document
     text = re.sub(r"(?:\n\s*---\s*)+$", "", text).strip()
 
     return text

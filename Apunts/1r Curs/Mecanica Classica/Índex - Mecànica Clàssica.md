@@ -18,7 +18,7 @@ Benvingut/da al mòdul de **Mecànica Clàssica**. Aquest bloc cobreix l'estudi 
 - **Sistema discret de 2 partícules a la recta**
 - **Generalització a $N$ partícules en 1D i 3D**
 - **Distribucions contínues de massa (densitats $\lambda$, $\sigma$, $\rho$)**
-- **Exemples pràctics d'integració
+- **Exemples pràctics d'integració**
 
 ---
 *Enllaços de navegació:*

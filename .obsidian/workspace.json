@@ -8,31 +8,45 @@
         "type": "tabs",
         "children": [
           {
-            "id": "66bec62e72516257",
+            "id": "4a84351c68b2d868",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/1r Curs/Algebra 1/04. Espais Vectorials.md",
+                "file": "Apunts/1r Curs/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04. Espais Vectorials"
+              "title": "01. Sistemes Lineals, Matrius i Operacions Elementals"
             }
           },
           {
-            "id": "e14ee6cff1dfb09d",
+            "id": "298caf369b761f41",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apunts/1r Curs/Fonaments 1/05. Enters Modulars.md",
+                "file": "Apunts/1r Curs/Funcions 1/04. Teoria de Subsuccessions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05. Enters Modulars"
+              "title": "04. Teoria de Subsuccessions"
+            }
+          },
+          {
+            "id": "028ba0182e73b543",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Apunts/1r Curs/Algebra 1/03. Determinants.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03. Determinants"
             }
           }
         ],
@@ -70,7 +84,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "peak",
+                "query": "coro",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -215,12 +229,37 @@
       "bases:Crea una base nova": false
     }
   },
-  "active": "e14ee6cff1dfb09d",
+  "active": "298caf369b761f41",
   "lastOpenFiles": [
-    "Apunts/1r Curs/Funcions 1/Índex - Funcions 1.md",
+    "Apunts Fotos/Funcions1/Llibre_1r-curs.pdf",
+    "Apunts Fotos/Funcions1/PXL_20261116_081800248.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261116_081351172.jpg",
+    "Apunts Fotos/Funcions1/PXL_20261116_081348421.jpg",
     "Apunts/1r Curs/Funcions 1/03. Successions de Nombres Reals.md",
+    "Apunts/1r Curs/Funcions 1/04. Teoria de Subsuccessions.md",
+    "Apunts/1r Curs/Algebra 1/01. Sistemes Lineals, Matrius i Operacions Elementals.md",
+    "Apunts/1r Curs/Algebra 1/03. Determinants.md",
+    "Apunts/1r Curs/Funcions 1/Índex - Funcions 1.md",
+    "Sense títol.md",
+    "Índex.md",
+    "Apunts/2n Curs/Analisi Matematica/02. Successions i sèries de funcions.md",
+    "Apunts/2n Curs/Analisi Matematica/01. Sèries Numèriques.md",
+    "Apunts/1r Curs/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
     "Apunts/1r Curs/Fonaments 1/05. Enters Modulars.md",
+    "Apunts/1r Curs/Funcions 1/02. Cardinalitat i Numerabilitat.md",
+    "GUIA_APUNTS.md",
     "Apunts/1r Curs/Algebra 1/04. Espais Vectorials.md",
+    "Apunts/1r Curs/Fonaments 1/Índex - Fonaments 1.md",
+    "Apunts/1r Curs/Algebra 1/Índex - Àlgebra 1.md",
+    "Apunts/1r Curs/Algebra 1/02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius.md",
+    "Apunts/1r Curs/Fonaments 1/01. Resolució d'Equacions i Mètodes de Demostració.md",
+    "Apunts/1r Curs/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
+    "Apunts/1r Curs/Fonaments 1/03. Relacions Binàries i Ordre.md",
+    "Apunts/1r Curs/Fonaments 1/04. Relacions d'Equivalència.md",
+    "Apunts/1r Curs/Mecanica Classica/01. Cinemàtica en 2D i 3D.md",
+    "Apunts/1r Curs/Mecanica Classica/02. Dinàmica de Sistemes de Partícules i Centre de Masses.md",
+    "Apunts/2n Curs/Analisi Matematica/Índex - Anàlisi Matemàtica.md",
+    "Apunts/2n Curs/Analisi Matematica/04. Sèries de Fourier.md",
     "Apunts Fotos/registre_fotos.csv",
     "Apunts Fotos/Algebra1/PXL_20261119_183128092.jpg",
     "Apunts Fotos/Algebra1/PXL_20261119_183121414.jpg",
@@ -229,37 +268,13 @@
     "Apunts Fotos/Algebra1/PXL_20261119_183106507.jpg",
     "Apunts Fotos/Algebra1/PXL_20261119_183100359.jpg",
     "Apunts Fotos/Algebra1/PXL_20261119_183056725.jpg",
-    "Apunts Fotos/Algebra1/PXL_20261119_183048951.jpg",
-    "Apunts/1r Curs/Índex - 1r Curs.md",
-    "Apunts/1r Curs/Algebra 1/Índex - Àlgebra 1.md",
-    "Apunts/1r Curs/Fonaments 1/04. Relacions d'Equivalència.md",
-    "Apunts/1r Curs/Fonaments 1/Índex - Fonaments 1.md",
-    "Índex.md",
-    "Apunts Fotos/Funcions1/PXL_20261118_171802951.jpg",
-    "Apunts Fotos/Funcions1/PXL_20261118_171800757.jpg",
-    "README.md",
-    "Apunts/1r Curs/Algebra 1/03. Determinants.md",
     "Llibre_Matematiques.html",
-    "Apunts/2n Curs/Analisi Matematica/02. Successions i sèries de funcions.md",
-    "GUIA_APUNTS.md",
-    "Apunts/1r Curs/Mecanica Classica/02. Dinàmica de Sistemes de Partícules i Centre de Masses.md",
-    "Apunts/1r Curs/Mecanica Classica/01. Cinemàtica en 2D i 3D.md",
-    "Apunts/1r Curs/Mecanica Classica/Índex - Mecànica Clàssica.md",
-    "Apunts/2n Curs/Índex - 2n Curs.md",
     "Llibre_algebra-1.html",
     "Llibre_2n-curs.html",
     "Llibre_1r-curs.html",
-    "Índex - Anàlisis Matemàtica.md",
-    "Apunts/Índex - Anàlisis Matemàtica.md",
-    "Apunts/2n Curs/Analisi Matematica/Índex - Anàlisi Matemàtica.md",
-    "Apunts/2n Curs/Analisi Matematica/01. Sèries Numèriques.md",
     "Apunts/2n Curs/Analisi Matematica",
     "Apunts/1r Curs/Mecanica Classica",
-    "Apunts/1r Curs/Funcions 1/02. Cardinalitat i Numerabilitat.md",
-    "Apunts/1r Curs/Funcions 1/01. Els Nombres Reals i Propietats Fonamentals.md",
     "Apunts/1r Curs/Funcions 1",
-    "Apunts/1r Curs/Fonaments 1/03. Relacions Binàries i Ordre.md",
-    "Apunts/1r Curs/Fonaments 1/02. Teoria de Conjunts i Construccions Fonamentals.md",
     "Apunts/1r Curs/Fonaments 1",
     "Apunts/1r Curs/Algebra 1"
   ]

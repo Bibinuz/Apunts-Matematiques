@@ -16,31 +16,35 @@ Benvingut/da al mòdul de **Funcions de Variable Real 1**. Aquest bloc estableix
 - **Teoremes de densitat**
 - **Àlgebra de racionals i irracionals**
 - **Valor absolut**
+- **Descomposició decimal dels nombres reals**
 
 ### 2. [[02. Cardinalitat i Numerabilitat]]
-- **Desenvolupament decimal**
 - **Equipotència**
 - **Conjunts numerables**
-- **Proposicions clau**
+- **Proposicions clau de numerabilitat**
 - **Teorema de la numerabilitat de $\mathbb{Q}$**
-- **Incomptabilitat de $\mathbb{R}$**
+- **Incomptabilitat de $\mathbb{R}$ (Argument diagonal de Cantor)**
 
 ### 3. [[03. Successions de Nombres Reals]]
-- **Concepte de successió**
-- **Acotació i monotonia**
+- **Concepte de successió i acotació/monotonia**
 - **Definició formal de límit ($\varepsilon$-$n_0$)**
-- **Demostracions pràctiques per definició**
 - **Teorema d'unicitat del límit**
-- **Proposició fonamental de convergència i acotació**
-- **Preservació de desigualtats febles pel límit**
+- **Relació entre convergència i acotació**
+- **Preservació de desigualtats febles**
 - **Àlgebra de límits**
 - **Teorema de la convergència monòtona**
-- **Formes indeterminades i Teorema de l'Encaix**
-- **Producte d'un infinitèsim per una successió acotada**
-- **Límits infinits i escala de creixement via Binomi de Newton**
-- **Criteris avançats per al càlcul de límits**
-- **Successions parcials**
+- **Teorema de l'Encaix i infinitèsims**
+- **Límits infinits i escala de creixement**
+- **Criteris avançats de càlcul (Stolz-Cesàro, mitjanes i quocient-arrel)**
 
+### 4. [[04. Teoria de Subsuccessions]]
+- **Successions parcials (subsuccessions)**
+- **Preservació del límit i criteri de divergència**
+- **Punts d'acumulació (valors d'adherència)**
+- **Lema dels punts cim i subsuccessió monòtona**
+- **Teorema de Bolzano-Weierstrass**
+- **Límit superior i límit inferior**
+- **Successions de Cauchy i completesa de $\mathbb{R}$**
 ---
 *Enllaços de navegació:*
 - [[Índex|← Tornar a l'Índex General del Grau]]
