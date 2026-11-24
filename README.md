@@ -31,7 +31,7 @@ No cal saber fer servir la terminal ni comandes complexes de Git:
 1. **Clonar el repositori:**
    ```bash
    git clone https://github.com/Bibinuz/Apunts-Matematiques.git
-   cd Matematiques
+   cd Apunts-Matematiques
    ```
 2. **Actualitzar apunts:**
    ```bash

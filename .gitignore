@@ -7,11 +7,11 @@
 *.bmp
 *.tiff
 *.heic
-Llibre_*.html
+*.html
 *.pdf
 
 # Estat local de la sessió de l'usuari
-.obsidian/workspace.json
+.obsidian/
 
 # Python
 __pycache__/
@@ -20,3 +20,4 @@ __pycache__/
 # Fitxers de sistema operatiu
 .DS_Store
 Thumbs.db
+

@@ -45,9 +45,9 @@ Benvingut/da al mòdul de **Funcions de Variable Real 1**. Aquest bloc estableix
 - **Teorema de Bolzano-Weierstrass**
 - **Límit superior i límit inferior**
 - **Successions de Cauchy i completesa de $\mathbb{R}$**
-### 5. [[05. Funcions]]
-- **Propietats de les funcions**
-- **Límits**
+### 5. [[05. Funcions d'una variable]]
+- **Conceptes bàsics**
+- **Límit d'una funció en un punt**
 
 ---
 *Enllaços de navegació:*
