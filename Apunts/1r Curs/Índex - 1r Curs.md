@@ -11,6 +11,7 @@ Assignatura centrada en l'estudi de sistemes d'equacions lineals, càlcul matric
   - [[02. PAQ-Reducció, Rang i Teorema de Rouché-Frobenius]]
   - [[03. Determinants]]
   - [[04. Espais Vectorials]]
+  - [[05. Dimensió i Operacions amb Subespais]]
 
 ---
 

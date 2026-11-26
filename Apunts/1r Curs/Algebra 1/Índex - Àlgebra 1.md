@@ -42,9 +42,15 @@ Benvingut/da al mòdul d'**Àlgebra 1**. Aquest bloc cobreix la teoria fonamenta
 - **Sistemes generadors i espais finitament generats**
 - **Bases d'un espai vectorial**
 - **Coordenades respecte d'una base**
+
+### 5. [[05. Dimensió i Operacions amb Subespais]]
 - **Teorema d'intercanvi de Steinitz**
 - **Dimensió d'un espai vectorial i corol·laris**
 - **Càlcul efectiu de bases mitjançant matrius**
+- **Espai de solucions d'un sistema homogeni**
+- **Suma i intersecció de subespais vectorials**
+- **Fórmula de Grassmann**
+- **Suma directa**
 
 ---
 *Enllaços de navegació:*
